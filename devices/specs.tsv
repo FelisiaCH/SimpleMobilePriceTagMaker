@@ -1,0 +1,20 @@
+# code<TAB>region<TAB>storage_gb<TAB>ram_gb<TAB>battery_mah<TAB>cpu<TAB>gpu
+#
+# One code may have many rows — one per variant you stock. Some codes cover
+# several sizes (Infinix X6725 is 64 or 128 GB); Samsung-style codes usually
+# don't. The app shows the rows as buttons; it never fills a field on its own.
+#
+#   code      letters and digits only, uppercase. SM-S928B and "sm s928b" and
+#             MT9Q2TH/A all normalise the same way as the lookup does.
+#   region    free text, blank if it doesn't matter. iPhone part-number suffix
+#             (LL, ZP, TH, CH, JP) or Android Global / China / India.
+#   numbers   whole numbers, no units. Blank = leave that field alone.
+#   cpu/gpu   shown on screen only, never printed on the tag.
+#
+# Blank fields still need their tabs:  X6725<TAB><TAB>128<TAB>8<TAB><TAB><TAB>
+# Ships empty on purpose — fill it from the boxes you actually sell.
+#
+# Example only; invented values, not real device data:
+# EXAMPLECODE1	Global	64	4	5000	Example Chipset	Example GPU
+# EXAMPLECODE1	Global	128	8	5000	Example Chipset	Example GPU
+# EXAMPLECODE2	TH	256	12	4800	Example Chipset	Example GPU

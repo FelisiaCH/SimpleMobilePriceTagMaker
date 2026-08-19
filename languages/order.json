@@ -1,0 +1,31 @@
+{
+  "_comment": "Order is load-bearing: it sets the order of the language dropdowns. First tag entry is the default.",
+  "tag": [
+    "lo",
+    "th",
+    "en",
+    "zh",
+    "zt",
+    "vi",
+    "km",
+    "my",
+    "ja",
+    "ko",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "ru",
+    "id",
+    "ms",
+    "tl",
+    "hi",
+    "ar"
+  ],
+  "ui": [
+    "en",
+    "lo",
+    "th",
+    "zh"
+  ]
+}
