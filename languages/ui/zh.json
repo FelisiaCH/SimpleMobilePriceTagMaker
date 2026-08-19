@@ -58,6 +58,7 @@
   "devicesDesc": "输入机型代码如 RMX3310 或 SM-S256VL 可查出真实型号。留空的栏位会打印成手写用的横线。",
   "h_model": "机型",
   "h_region": "地区",
+  "h_cpu": "芯片",
   "h_ram": "内存",
   "h_price": "价格",
   "h_warranty": "保修",

@@ -269,7 +269,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .logo img{width:100%;height:100%;object-fit:cover}
 .logo svg{width:56%;height:56%;fill:#fff}
 .store{font-size:calc(7.4pt * var(--fs));font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--c-brand);line-height:1.2}
-.field{margin-top:5.5mm}
+.field{margin-top:4.6mm}
 .field-label{font-size:calc(6pt * var(--fs));color:var(--c-meta);margin-bottom:.8mm;
   display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
 .origin{min-width:0;color:var(--c-model);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -277,14 +277,15 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .rule .v{font-size:calc(10pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.15;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:1.1mm;margin-top:2.6mm}
-.chip{flex:0 1 calc(50% - .55mm);min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm .8mm;display:flex;align-items:center;gap:.6mm}
+.chip{flex:0 1 calc(33.333% - .74mm);min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm .8mm;display:flex;align-items:center;gap:.6mm}
 .chip svg{width:2.1mm;height:2.1mm;flex:0 0 auto;fill:var(--c-spec);opacity:.75}
 .cline{flex:1 1 auto;min-width:0;border-bottom:1px solid var(--c-rule);text-align:center;
   font-size:calc(6.6pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .cu{font-size:calc(5.4pt * var(--fs));color:var(--c-spec);flex:0 0 auto;white-space:nowrap}
+.chip.lg{flex-basis:calc(50% - .55mm)}
 .chip.lg .cline{font-size:calc(8.4pt * var(--fs))}
 .chip.sm .cline{font-size:calc(5.8pt * var(--fs));font-weight:500}
-.chip.sm svg{opacity:.55}
+.chip.sm svg{display:none}
 .spacer{flex:1 1 auto;min-height:2mm}
 .price{display:flex;align-items:flex-end;gap:1.8mm}
 .kip{font-size:calc(15pt * var(--fs));color:var(--c-price);line-height:1;font-weight:600;white-space:nowrap}
@@ -444,11 +445,12 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
           <div class="tbl-wrap" id="tblWrap">
             <table class="tbl">
               <thead><tr>
-                <th style="width:21%" data-t="h_model">Model</th>
+                <th style="width:17%" data-t="h_model">Model</th>
                 <th style="width:8%" data-t="h_region">Origin</th>
                 <th style="width:8%">GB</th>
                 <th style="width:8%" data-t="h_ram">RAM</th>
                 <th style="width:9%">mAh</th>
+                <th style="width:12%" data-t="h_cpu">CPU</th>
                 <th style="width:16%" data-t="h_price">Price</th>
                 <th style="width:13%" data-t="h_warranty">Warranty</th>
                 <th style="width:8%" data-t="h_qty">Tags</th>
@@ -531,9 +533,10 @@ var UI = {
     textSize:"Text size", small:"Small", normal:"Normal", large:"Large", xlarge:"Extra large",
     cutGuides:"Cut guides", show:"Show", hide:"Hide", devices:"Devices",
     devicesDesc:"Type a model code like RMX3310 or SM-S256VL to get the real name. Any box left empty prints as a line to write on.",
-    h_model:"Model", h_region:"Origin", h_ram:"RAM", h_price:"Price", h_warranty:"Warranty", h_qty:"Tags",
-    emptyTitle:"No devices yet", emptyMsg:"Add one, or print the sheet blank and fill it in by hand.",
-    st_tags:"Tags", st_pages:"Pages", st_blank:"Blank slots", preview:"Preview", previewSize:"Preview size",
+    h_model:"Model", h_region:"Origin", h_cpu:"CPU", h_ram:"RAM", h_price:"Price", h_warranty:"Warranty",
+    h_qty:"Tags", emptyTitle:"No devices yet",
+    emptyMsg:"Add one, or print the sheet blank and fill it in by hand.", st_tags:"Tags", st_pages:"Pages",
+    st_blank:"Blank slots", preview:"Preview", previewSize:"Preview size",
     printNote:"Printing is always full size.",
     confirmClear:"Delete every device and reset the shop details?",
     badFile:"That file isn't a price tag file. Pick one exported from here.",
@@ -552,7 +555,7 @@ var UI = {
     large:"ໃຫຍ່", xlarge:"ໃຫຍ່ພິເສດ", cutGuides:"ເສັ້ນຕັດ", show:"ສະແດງ", hide:"ເຊື່ອງ",
     devices:"ລາຍການເຄື່ອງ",
     devicesDesc:"ພິມລະຫັດລຸ້ນ ເຊັ່ນ RMX3310 ຫຼື SM-S256VL ຈະໄດ້ຊື່ຈິງ. ຊ່ອງທີ່ປ່ອຍຫວ່າງ ຈະພິມເປັນເສັ້ນສຳລັບຂຽນມື.",
-    h_model:"ລຸ້ນເຄື່ອງ", h_region:"ປະເທດ", h_ram:"ແຣມ", h_price:"ລາຄາ", h_warranty:"ຮັບປະກັນ",
+    h_model:"ລຸ້ນເຄື່ອງ", h_region:"ປະເທດ", h_cpu:"ຊິບ", h_ram:"ແຣມ", h_price:"ລາຄາ", h_warranty:"ຮັບປະກັນ",
     h_qty:"ຈຳນວນ", emptyTitle:"ຍັງບໍ່ມີເຄື່ອງ", emptyMsg:"ເພີ່ມເຄື່ອງ ຫຼື ພິມແຜ່ນເປົ່າໄວ້ຂຽນມື.",
     st_tags:"ປ້າຍ", st_pages:"ໜ້າ", st_blank:"ຊ່ອງຫວ່າງ", preview:"ຕົວຢ່າງ", previewSize:"ຂະໜາດຕົວຢ່າງ",
     printNote:"ຕອນພິມຈະເປັນຂະໜາດຈິງສະເໝີ.", confirmClear:"ລຶບເຄື່ອງທັງໝົດ ແລະ ຕັ້ງຂໍ້ມູນຮ້ານຄືນບໍ?",
@@ -572,9 +575,10 @@ var UI = {
     large:"ใหญ่", xlarge:"ใหญ่พิเศษ", cutGuides:"เส้นตัด", show:"แสดง", hide:"ซ่อน",
     devices:"รายการเครื่อง",
     devicesDesc:"พิมพ์รหัสรุ่น เช่น RMX3310 หรือ SM-S256VL เพื่อหาชื่อจริง ช่องที่เว้นว่างจะพิมพ์เป็นเส้นสำหรับเขียนมือ",
-    h_model:"รุ่นเครื่อง", h_region:"ประเทศ", h_ram:"แรม", h_price:"ราคา", h_warranty:"รับประกัน",
-    h_qty:"จำนวน", emptyTitle:"ยังไม่มีเครื่อง", emptyMsg:"เพิ่มเครื่อง หรือพิมพ์แผ่นเปล่าไว้เขียนมือ",
-    st_tags:"ป้าย", st_pages:"หน้า", st_blank:"ช่องว่าง", preview:"ตัวอย่าง", previewSize:"ขนาดตัวอย่าง",
+    h_model:"รุ่นเครื่อง", h_region:"ประเทศ", h_cpu:"ชิป", h_ram:"แรม", h_price:"ราคา",
+    h_warranty:"รับประกัน", h_qty:"จำนวน", emptyTitle:"ยังไม่มีเครื่อง",
+    emptyMsg:"เพิ่มเครื่อง หรือพิมพ์แผ่นเปล่าไว้เขียนมือ", st_tags:"ป้าย", st_pages:"หน้า",
+    st_blank:"ช่องว่าง", preview:"ตัวอย่าง", previewSize:"ขนาดตัวอย่าง",
     printNote:"เวลาพิมพ์จะเป็นขนาดจริงเสมอ", confirmClear:"ลบเครื่องทั้งหมดและรีเซ็ตข้อมูลร้านหรือไม่?",
     badFile:"ไฟล์นี้ไม่ใช่ไฟล์ป้ายราคา เลือกไฟล์ที่บันทึกจากที่นี่",
     badImage:"อ่านไฟล์รูปนี้ไม่ได้ ลองใช้ PNG หรือ JPG"},
@@ -588,7 +592,7 @@ var UI = {
     c_contact:"联系方式", c_bg:"背景", options:"版面设置", sep:"千位分隔符", textSize:"字号", small:"小", normal:"标准",
     large:"大", xlarge:"特大", cutGuides:"裁切线", show:"显示", hide:"隐藏", devices:"机型列表",
     devicesDesc:"输入机型代码如 RMX3310 或 SM-S256VL 可查出真实型号。留空的栏位会打印成手写用的横线。", h_model:"机型", h_region:"地区",
-    h_ram:"内存", h_price:"价格", h_warranty:"保修", h_qty:"数量", emptyTitle:"还没有机型",
+    h_cpu:"芯片", h_ram:"内存", h_price:"价格", h_warranty:"保修", h_qty:"数量", emptyTitle:"还没有机型",
     emptyMsg:"添加一个，或直接打印空白表格手写填写。", st_tags:"标签", st_pages:"页数", st_blank:"空位", preview:"预览",
     previewSize:"预览大小", printNote:"打印始终为实际尺寸。", confirmClear:"删除所有机型并重置店铺信息？",
     badFile:"这不是价格标签文件。请选择从这里导出的文件。", badImage:"无法读取该图片。请尝试 PNG 或 JPG。"}
@@ -655,7 +659,7 @@ function normalize(o){
 function cleanEntry(e){
   e = e || {}; var q = parseInt(e.qty,10);
   return { id:e.id||uid(), model:str(e.model), gb:str(e.gb), ram:str(e.ram), mah:str(e.mah),
-           region:str(e.region), price:str(e.price), warranty:str(e.warranty),
+           region:str(e.region), cpu:str(e.cpu), price:str(e.price), warranty:str(e.warranty),
            qty:(isNaN(q)||q<1)?1:Math.min(q,999) };
 }
 function str(v){ return typeof v==="string" ? v : (v==null ? "" : String(v)); }
@@ -690,6 +694,7 @@ var ICON = {
   storage:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm2 2v5h6V4H8zm-1 9h10v7H7v-7z"/></svg>',
   ram:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.6 0 3.1 1.9 3.7 5H8.3C8.9 5.9 10.4 4 12 4zM7.9 11h8.2a17 17 0 0 1 0 2H7.9a17 17 0 0 1 0-2zm.4 4h7.4c-.6 3.1-2.1 5-3.7 5s-3.1-1.9-3.7-5z"/></svg>',
   battery:'<svg viewBox="0 0 24 24"><path d="M3 7h15a2 2 0 0 1 2 2v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v6h15V9H3z"/></svg>',
+  cpu:'<svg viewBox="0 -960 960 960"><path d="M360-360v-240h240v240H360Zm0 240v-80h-80q-33 0-56.5-23.5T200-280v-80h-80v-80h80v-80h-80v-80h80v-80q0-33 23.5-56.5T280-760h80v-80h80v80h80v-80h80v80h80q33 0 56.5 23.5T760-680v80h80v80h-80v80h80v80h-80v80q0 33-23.5 56.5T680-200h-80v80h-80v-80h-80v80h-80Zm320-160v-400H280v400h400Z"/></svg>',
   region:'<svg viewBox="0 -960 960 960"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-40-82v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q20-22 36-47.5t26.5-53q10.5-27.5 16-56.5t5.5-59q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>'
 };
 
@@ -829,7 +834,8 @@ function tagHTML(e,st){
     '<div class="field"><div class="field-label">'+esc(t.model)+'</div>'+
       '<div class="rule"><span class="v">'+esc(e.model)+'</span></div></div>'+
     '<div class="chips">'+chip("storage",e.gb,"GB","lg")+chip("ram",e.ram,t.ram,"lg")+chip("battery",e.mah,"mAh")+
-      (e.region ? chip("region",regionLabel(e.region),"","sm") : '')+'</div>'+
+      (e.region ? chip("region",regionLabel(e.region),"","sm") : '')+
+      (e.cpu ? chip("cpu",e.cpu,"","sm") : '')+'</div>'+
     '<div class="spacer"></div>'+
     '<div class="price">'+(st.curSym ? '<span class="kip">'+esc(st.curSym)+'</span>' : '')+
       '<span class="rule"><span class="v">'+esc(money(e.price,st.sep))+'</span></span></div>'+
@@ -861,7 +867,8 @@ function renderSheet(){
 
 /* ══ list ══ */
 var COLS = [["model","text","iPhone 15 Pro"],["region","text","TH"],["gb","text","256"],["ram","text","8"],
-            ["mah","text","5000"],["price","text","8,500,000"],["warranty","text","12"],["qty","number",""]];
+            ["mah","text","5000"],["cpu","text","Snap 8 Elite"],["price","text","8,500,000"],
+            ["warranty","text","12"],["qty","number",""]];
 function renderList(){
   var h = "";
   state.entries.forEach(function(e,idx){
@@ -1124,8 +1131,8 @@ function applySpecs(i, n){
   var inp = row && row.querySelector('input[data-k="model"]');
   var v = inp && specsFor(inp.value.trim())[n];
   if(!v) return;
-  ["region","gb","ram","mah"].forEach(function(k){  // cpu/gpu stay out of the entry, so they
-    if(!v[k]) return;                               // can never reach the printed tag
+  ["region","gb","ram","mah","cpu"].forEach(function(k){  // gpu stays out — there is nowhere
+    if(!v[k]) return;                                     // on the tag to put it
     state.entries[i][k] = v[k];
     var f = row.querySelector('input[data-k="'+k+'"]');
     if(f) f.value = v[k];
