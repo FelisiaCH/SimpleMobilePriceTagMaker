@@ -1,0 +1,10 @@
+Brand icons and brand colours from Simple Icons — https://simpleicons.org
+Licence: CC0 1.0 Universal (public domain dedication).
+  https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md
+
+The .svg files are the originals as published. brands.json is the path data and
+official brand colour extracted from them, which tools/build.mjs embeds into
+index.html so the app stays a single offline file.
+
+Brand names and logos are trademarks of their respective owners; they appear
+here only to identify which messaging service a shop's contact belongs to.
