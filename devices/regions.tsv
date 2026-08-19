@@ -1,0 +1,15 @@
+# code<TAB>label — how a market code should read on the printed tag.
+#
+# The origin field keeps whatever is typed (THL); the tag prints the label
+# (Thailand). No mapping, no problem — the code is printed as-is.
+#
+# Deliberately not seeded from the region tables on the internet: they
+# disagree with each other and go stale. ZP was Hong Kong/Macau and is now
+# used across South-East Asia. LL is USA, Canada and replacement units at
+# once. This file is the shop's own knowledge and beats all of them.
+#
+# Both kinds of code live here — Samsung CSC (THL, XME) and the Apple
+# part-number suffix (ZP, LL, TH).
+
+THL	Thailand
+ZP	SEA

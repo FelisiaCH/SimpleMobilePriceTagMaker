@@ -276,7 +276,8 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .rule{border-bottom:1px solid var(--c-rule);min-height:5.4mm;display:flex;align-items:flex-end;padding-bottom:.6mm}
 .rule .v{font-size:calc(9.2pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.15;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-.chips{display:flex;gap:1.6mm;margin-top:2.6mm}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm;margin-top:2.6mm}
+.chip.wide{flex-basis:100%}
 .chip{flex:1 1 0;min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm 1.2mm;display:flex;align-items:center;gap:.9mm}
 .chip svg{width:2.6mm;height:2.6mm;flex:0 0 auto;fill:var(--c-spec);opacity:.75}
 .cline{flex:1 1 auto;min-width:0;border-bottom:1px solid var(--c-rule);text-align:center;
@@ -686,7 +687,8 @@ var ICON = {
   logo:'<svg viewBox="0 -960 960 960"><path d="M841-518v318q0 33-23.5 56.5T761-120H201q-33 0-56.5-23.5T121-200v-318q-23-21-35.5-54t-.5-72l42-136q8-26 28.5-43t47.5-17h556q27 0 47 16.5t29 43.5l42 136q12 39-.5 71T841-518Zm-272-42q27 0 41-18.5t11-41.5l-22-140h-78v148q0 21 14 36.5t34 15.5Zm-180 0q23 0 37.5-15.5T441-612v-148h-78l-22 140q-4 24 10.5 42t37.5 18Zm-178 0q18 0 31.5-13t16.5-33l22-154h-78l-40 134q-6 20 6.5 43t41.5 23Zm540 0q29 0 42-23t6-43l-42-134h-76l22 154q3 20 16.5 33t31.5 13Z"/></svg>',
   storage:'<svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm2 2v5h6V4H8zm-1 9h10v7H7v-7z"/></svg>',
   ram:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.6 0 3.1 1.9 3.7 5H8.3C8.9 5.9 10.4 4 12 4zM7.9 11h8.2a17 17 0 0 1 0 2H7.9a17 17 0 0 1 0-2zm.4 4h7.4c-.6 3.1-2.1 5-3.7 5s-3.1-1.9-3.7-5z"/></svg>',
-  battery:'<svg viewBox="0 0 24 24"><path d="M3 7h15a2 2 0 0 1 2 2v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v6h15V9H3z"/></svg>'
+  battery:'<svg viewBox="0 0 24 24"><path d="M3 7h15a2 2 0 0 1 2 2v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v6h15V9H3z"/></svg>',
+  region:'<svg viewBox="0 -960 960 960"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-40-82v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q20-22 36-47.5t26.5-53q10.5-27.5 16-56.5t5.5-59q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>'
 };
 
 /* ══ contact platforms ══ */
@@ -732,6 +734,7 @@ var DB_C = "916 0 1010 1 1013 2 1202 3 1901 4 2021 5 2032 6 2039 7 2040 8 2042 9
 var DB_S = "";
 var DB_CG = "";
 var DB_RG = "";
+var DB_RN = "THL\tThailand\nZP\tSEA";
 var DBMAP = null;
 function db(){
   if(DBMAP) return DBMAP;
@@ -803,8 +806,9 @@ function platPh(k){
 }
 
 /* ══ tag ══ */
-function chip(icon,val,unit){
-  return '<div class="chip">'+ICON[icon]+'<span class="cline">'+esc(val)+'</span><span class="cu">'+esc(unit)+'</span></div>';
+function chip(icon,val,unit,wide){
+  return '<div class="chip'+(wide?" wide":"")+'">'+ICON[icon]+'<span class="cline">'+esc(val)+
+         '</span><span class="cu">'+esc(unit)+'</span></div>';
 }
 function tagHTML(e,st){
   var t = TL();
@@ -820,10 +824,10 @@ function tagHTML(e,st){
 
   return '<div class="tag"'+(t.rtl?' dir="rtl"':'')+'>'+
     '<div class="tag-head"><div class="logo">'+logo+'</div><div class="store">'+esc(st.store)+'</div></div>'+
-    '<div class="field"><div class="field-label">'+esc(t.model)+
-      (e.region ? '<span class="origin">'+esc(e.region)+'</span>' : '')+'</div>'+
+    '<div class="field"><div class="field-label">'+esc(t.model)+'</div>'+
       '<div class="rule"><span class="v">'+esc(e.model)+'</span></div></div>'+
-    '<div class="chips">'+chip("storage",e.gb,"GB")+chip("ram",e.ram,t.ram)+chip("battery",e.mah,"mAh")+'</div>'+
+    '<div class="chips">'+chip("storage",e.gb,"GB")+chip("ram",e.ram,t.ram)+chip("battery",e.mah,"mAh")+
+      (e.region ? chip("region",regionLabel(e.region),"",1) : '')+'</div>'+
     '<div class="spacer"></div>'+
     '<div class="price">'+(st.curSym ? '<span class="kip">'+esc(st.curSym)+'</span>' : '')+
       '<span class="rule"><span class="v">'+esc(money(e.price,st.sep))+'</span></span></div>'+
@@ -1133,12 +1137,26 @@ function applySpecs(i, n){
 // South-East Asia) — so the code is shown as-is for the shop to confirm or
 // replace, and it is never written over something already entered.
 function regionFromCode(q){
-  var s = String(q).trim(), m;
-  m = /^[A-Za-z0-9]{5}([A-Za-z]{1,2})\s*\/\s*[Aa]$/.exec(s);            // Apple part number
-  if(m) return m[1].toUpperCase();
-  m = /^SM-?[A-Za-z]\d{3,4}([A-Za-z][A-Za-z0-9]?)(?:\/DSN?)?$/i.exec(s);  // Samsung
-  if(m) return m[1].toUpperCase();
-  return "";
+  // Only Apple's part number states the market it was built for: MT952ZA/A -> ZA.
+  // Samsung's trailing letter (SM-A035F) separates SKUs, not markets — its market
+  // code is the CSC on the box label (THL), which is nowhere in the model number,
+  // so it is typed rather than guessed. Slicing the letters out of what was typed
+  // cannot be wrong; what they MEAN comes from devices/regions.tsv, which the shop
+  // owns, because the published tables disagree and drift.
+  var m = /^[A-Za-z0-9]{5}([A-Za-z]{1,2})\s*\/\s*[Aa]$/.exec(String(q).trim());
+  return m ? m[1].toUpperCase() : "";
+}
+var RNMAP = null;
+function regionLabel(v){
+  if(!v) return "";
+  if(!RNMAP){
+    RNMAP = new Map();
+    if(DB_RN) DB_RN.split("\n").forEach(function(row){
+      var i = row.indexOf("\t");
+      if(i > 0) RNMAP.set(row.slice(0,i).toUpperCase(), row.slice(i+1));
+    });
+  }
+  return RNMAP.get(String(v).trim().toUpperCase()) || v;
 }
 $("rows").addEventListener("input", function(ev){
   var inp = ev.target.closest('input[data-k="model"]'); if(!inp) return;

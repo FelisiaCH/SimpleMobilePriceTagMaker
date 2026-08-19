@@ -90,6 +90,15 @@ read("devices/specs.tsv").split("\n").forEach((raw, n) => {
 const dupRow = specRows.filter((r, i) => specRows.indexOf(r) !== i);
 if (dupRow.length) problems.push(`devices/specs.tsv has ${dupRow.length} exactly duplicated row(s), e.g. "${dupRow[0]}"`);
 
+const regionNames = read("devices/regions.tsv").split("\n")
+  .map(l => l.replace(/\r$/, ""))
+  .filter(l => l.trim() && !l.trim().startsWith("#"))
+  .map((l, n) => {
+    const i = l.indexOf("\t");
+    if (i < 1 || !l.slice(i + 1).trim()) { problems.push(`devices/regions.tsv line ${n + 1}: expected "CODE<TAB>Label"`); return null; }
+    return l.slice(0, i).trim().toUpperCase() + "\t" + l.slice(i + 1).trim();
+  }).filter(Boolean);
+
 if (problems.length) {
   console.error("build failed:\n" + problems.map(p => "  - " + p).join("\n"));
   process.exit(1);
@@ -166,6 +175,7 @@ at.DB_C = spliceLine(/^var DB_C = /, `var DB_C = ${js(codes)};`);
 at.DB_S = spliceLine(/^var DB_S = /, `var DB_S = ${js(specRows.join("\n"))};`);
 at.DB_CG = spliceLine(/^var DB_CG = /, `var DB_CG = ${js(cgList.join("\n"))};`);
 at.DB_RG = spliceLine(/^var DB_RG = /, `var DB_RG = ${js(rgList.join("\n"))};`);
+at.DB_RN = spliceLine(/^var DB_RN = /, `var DB_RN = ${js(regionNames.join("\n"))};`);
 
 const after = lines.join("\n");
 
@@ -179,6 +189,7 @@ console.log(`device names    ${String(nameCount).padStart(6)}`);
 console.log(`device codes    ${String(codeCount).padStart(6)}   ${blocked.size} Apple model numbers blocked, ${blockedHits.length} collision(s) removed${blockedHits.length ? ": " + blockedHits.join(", ") : ""}`);
 const specCodes = new Set(specRows.map(r => r.split(" ")[0]));
 const multi = [...specCodes].filter(c => specRows.filter(r => r.startsWith(c + " ")).length > 1);
+console.log(`region labels   ${String(regionNames.length).padStart(6)}   ${regionNames.map(r => r.split("\t")[0]).join(" ")}`);
 console.log(`spec rows       ${String(specRows.length).padStart(6)}   ${specCodes.size} code(s), ${multi.length} with more than one variant, ${rgList.length} region(s)`);
 console.log(`spliced at      L:${at.L[0]}  UI:${at.UI[0]}  DB_N:${at.DB_N[0]}  DB_C:${at.DB_C[0]}  DB_S:${at.DB_S[0]}`);
 if (!specRows.length) console.log(`                devices/specs.tsv is empty — the "fill specs" button stays hidden`);
