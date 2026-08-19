@@ -277,8 +277,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .rule .v{font-size:calc(9.2pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.15;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:1.1mm;margin-top:2.6mm}
-.chip.wide{flex-basis:100%}
-.chip{flex:1 1 0;min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm .8mm;display:flex;align-items:center;gap:.6mm}
+.chip{flex:0 1 calc(50% - .55mm);min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm .8mm;display:flex;align-items:center;gap:.6mm}
 .chip svg{width:2.1mm;height:2.1mm;flex:0 0 auto;fill:var(--c-spec);opacity:.75}
 .cline{flex:1 1 auto;min-width:0;border-bottom:1px solid var(--c-rule);text-align:center;
   font-size:calc(6.6pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
@@ -806,8 +805,8 @@ function platPh(k){
 }
 
 /* ══ tag ══ */
-function chip(icon,val,unit,wide){
-  return '<div class="chip'+(wide?" wide":"")+'">'+ICON[icon]+'<span class="cline">'+esc(val)+
+function chip(icon,val,unit){
+  return '<div class="chip">'+ICON[icon]+'<span class="cline">'+esc(val)+
          '</span><span class="cu">'+esc(unit)+'</span></div>';
 }
 function tagHTML(e,st){
@@ -827,7 +826,7 @@ function tagHTML(e,st){
     '<div class="field"><div class="field-label">'+esc(t.model)+'</div>'+
       '<div class="rule"><span class="v">'+esc(e.model)+'</span></div></div>'+
     '<div class="chips">'+chip("storage",e.gb,"GB")+chip("ram",e.ram,t.ram)+chip("battery",e.mah,"mAh")+
-      (e.region ? chip("region",regionLabel(e.region),"",1) : '')+'</div>'+
+      (e.region ? chip("region",regionLabel(e.region),"") : '')+'</div>'+
     '<div class="spacer"></div>'+
     '<div class="price">'+(st.curSym ? '<span class="kip">'+esc(st.curSym)+'</span>' : '')+
       '<span class="rule"><span class="v">'+esc(money(e.price,st.sep))+'</span></span></div>'+
