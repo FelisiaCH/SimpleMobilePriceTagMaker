@@ -487,6 +487,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 </div>
 
 <div id="mhint" class="mhint no-print" hidden></div>
+<div id="dls" hidden></div>
 
 <script>
 (function(){
@@ -870,12 +871,51 @@ function renderSheet(){
 var COLS = [["model","text","iPhone 15 Pro"],["region","text","TH"],["gb","text","256"],["ram","text","8"],
             ["mah","text","5000"],["cpu","text","Snap 8 Elite"],["price","text","8,500,000"],
             ["warranty","text","12"],["qty","number",""]];
+// Suggestions come from the shop's own data — what it has already typed, what
+// devices/specs.tsv holds, and the market labels in devices/regions.tsv. Storage,
+// RAM and warranty also carry the sizes every shop sees. Price and quantity get
+// none: autocompleting a price onto a tag is a mistake waiting to happen.
+var SUGGESTED = { model:1, region:1, gb:1, ram:1, mah:1, cpu:1, warranty:1 };
+var SEED = {
+  gb:  ["16","32","64","128","256","512","1024"],
+  ram: ["1","2","3","4","6","8","12","16","24"],
+  warranty: ["3","6","12","24"]
+};
+function renderDatalists(){
+  var bag = {};
+  Object.keys(SUGGESTED).forEach(function(k){ bag[k] = {}; });
+  Object.keys(SEED).forEach(function(k){ SEED[k].forEach(function(v){ bag[k][v] = 1; }); });
+  if(DB_RN) DB_RN.split("\n").forEach(function(r){
+    var i = r.indexOf("\t");
+    if(i > 0){ bag.region[r.slice(0,i)] = 1; bag.region[r.slice(i+1)] = 1; }
+  });
+  specs().forEach(function(list){ list.forEach(function(v){
+    ["region","gb","ram","mah","cpu"].forEach(function(k){ if(v[k]) bag[k][v[k]] = 1; });
+  }); });
+  state.entries.forEach(function(e){
+    Object.keys(SUGGESTED).forEach(function(k){ if(e[k]) bag[k][e[k]] = 1; });
+  });
+  var h = "";
+  Object.keys(bag).forEach(function(k){
+    var vals = Object.keys(bag[k]).sort(function(a,b){
+      var na = parseFloat(a), nb = parseFloat(b);
+      if(!isNaN(na) && !isNaN(nb) && String(na) === a && String(nb) === b) return na - nb;
+      return a.localeCompare(b);
+    });
+    h += '<datalist id="dl_'+k+'">' +
+         vals.map(function(v){ return '<option value="'+esc(v)+'"></option>'; }).join("") +
+         '</datalist>';
+  });
+  $("dls").innerHTML = h;
+}
 function renderList(){
   var h = "";
   state.entries.forEach(function(e,idx){
     h += '<tr data-i="'+idx+'">';
     COLS.forEach(function(c){
-      h += '<td><input class="cell" type="'+c[1]+'" data-k="'+c[0]+'" value="'+esc(e[c[0]])+
+      h += '<td><input class="cell" type="'+c[1]+'" data-k="'+c[0]+'"'+
+           (SUGGESTED[c[0]] ? ' list="dl_'+c[0]+'" autocomplete="off"' : '')+
+           ' value="'+esc(e[c[0]])+
            '" placeholder="'+esc(c[2])+'"'+(c[0]==="qty"?' min="1" max="999"':'')+'></td>';
     });
     h += '<td class="acts">'+
@@ -951,8 +991,8 @@ function applySettings(){
 var drawTimer;
 function redraw(now){
   clearTimeout(drawTimer);
-  if(now){ renderSheet(); save(); return; }
-  drawTimer = setTimeout(function(){ renderSheet(); save(); },150);
+  if(now){ renderSheet(); renderDatalists(); save(); return; }
+  drawTimer = setTimeout(function(){ renderSheet(); renderDatalists(); save(); },150);
 }
 
 /* ══ events ══ */
@@ -1210,7 +1250,7 @@ $("mhint").addEventListener("mousedown", function(ev){
 addEventListener("scroll", hideHint, true);
 addEventListener("resize", hideHint);
 
-function boot(){ applySettings(); applyUI(); renderList(); renderSheet(); hideHint(); }
+function boot(){ applySettings(); applyUI(); renderList(); renderDatalists(); renderSheet(); hideHint(); }
 buildSelects();
 boot();
 $("sheet").style.zoom = 0.6;
