@@ -1105,18 +1105,23 @@ function applySpecs(i, n){
   });
   hideHint(); redraw(true);
 }
-// An Apple part number carries its own market: MT952ZA/A -> ZA. Reading those
-// letters back out is just string slicing on what was typed, so it is always
-// right — unlike mapping ZA to a country name, which the published tables
-// disagree on and which drifts (ZP moved from Hong Kong to South-East Asia).
-// So the code is filled in, never a country, and never over something typed.
-function regionFromPartNumber(q){
-  var m = /^\s*[A-Za-z0-9]{5}([A-Za-z]{1,2})\s*\/\s*[Aa]\s*$/.exec(String(q));
-  return m ? m[1].toUpperCase() : "";
+// A model code usually carries its own market: MT952ZA/A -> ZA, SM-A035F -> F.
+// Reading those letters back out is string slicing on what was typed, so it
+// cannot be wrong. What the letter MEANS is never derived — the published
+// tables disagree with each other and go stale (ZP moved from Hong Kong to
+// South-East Asia) — so the code is shown as-is for the shop to confirm or
+// replace, and it is never written over something already entered.
+function regionFromCode(q){
+  var s = String(q).trim(), m;
+  m = /^[A-Za-z0-9]{5}([A-Za-z]{1,2})\s*\/\s*[Aa]$/.exec(s);            // Apple part number
+  if(m) return m[1].toUpperCase();
+  m = /^SM-?[A-Za-z]\d{3,4}([A-Za-z][A-Za-z0-9]?)(?:\/DSN?)?$/i.exec(s);  // Samsung
+  if(m) return m[1].toUpperCase();
+  return "";
 }
 $("rows").addEventListener("input", function(ev){
   var inp = ev.target.closest('input[data-k="model"]'); if(!inp) return;
-  var rg = regionFromPartNumber(inp.value);
+  var rg = regionFromCode(inp.value);
   if(rg){
     var tr = inp.closest("tr"), f = tr.querySelector('input[data-k="region"]');
     if(f && !f.value){ f.value = rg; state.entries[+tr.dataset.i].region = rg; redraw(); }
