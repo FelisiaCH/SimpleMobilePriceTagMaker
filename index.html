@@ -274,7 +274,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
   display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
 .origin{min-width:0;color:var(--c-model);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rule{border-bottom:1px solid var(--c-rule);min-height:5.4mm;display:flex;align-items:flex-end;padding-bottom:.6mm}
-.rule .v{font-size:calc(9.2pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.15;
+.rule .v{font-size:calc(10pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.15;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:1.1mm;margin-top:2.6mm}
 .chip{flex:0 1 calc(50% - .55mm);min-width:0;border:1px solid var(--c-rule);border-radius:1mm;padding:1.1mm .8mm;display:flex;align-items:center;gap:.6mm}
@@ -282,6 +282,9 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .cline{flex:1 1 auto;min-width:0;border-bottom:1px solid var(--c-rule);text-align:center;
   font-size:calc(6.6pt * var(--fs));color:var(--c-model);font-weight:600;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .cu{font-size:calc(5.4pt * var(--fs));color:var(--c-spec);flex:0 0 auto;white-space:nowrap}
+.chip.lg .cline{font-size:calc(8.4pt * var(--fs))}
+.chip.sm .cline{font-size:calc(5.8pt * var(--fs));font-weight:500}
+.chip.sm svg{opacity:.55}
 .spacer{flex:1 1 auto;min-height:2mm}
 .price{display:flex;align-items:flex-end;gap:1.8mm}
 .kip{font-size:calc(15pt * var(--fs));color:var(--c-price);line-height:1;font-weight:600;white-space:nowrap}
@@ -291,7 +294,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
   border-bottom:1px dashed var(--c-rule);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meta .w{display:inline-block;min-width:7mm;text-align:center;color:var(--c-model);font-weight:600}
 .contact{display:flex;align-items:center;gap:1.4mm 3mm;margin-top:2.2mm;flex-wrap:wrap}
-.ci{display:flex;align-items:center;gap:1.1mm;font-size:calc(6.4pt * var(--fs));color:var(--c-contact);
+.ci{display:flex;align-items:center;gap:1.1mm;font-size:calc(5.6pt * var(--fs));color:var(--c-contact);
   min-width:0;overflow:hidden;white-space:nowrap;direction:ltr}
 .ci svg{width:3.1mm;height:3.1mm;flex:0 0 auto}
 .tag[dir=rtl] .contact{justify-content:flex-end}
@@ -805,8 +808,8 @@ function platPh(k){
 }
 
 /* ══ tag ══ */
-function chip(icon,val,unit){
-  return '<div class="chip">'+ICON[icon]+'<span class="cline">'+esc(val)+
+function chip(icon,val,unit,cls){
+  return '<div class="chip'+(cls?" "+cls:"")+'">'+ICON[icon]+'<span class="cline">'+esc(val)+
          '</span><span class="cu">'+esc(unit)+'</span></div>';
 }
 function tagHTML(e,st){
@@ -825,8 +828,8 @@ function tagHTML(e,st){
     '<div class="tag-head"><div class="logo">'+logo+'</div><div class="store">'+esc(st.store)+'</div></div>'+
     '<div class="field"><div class="field-label">'+esc(t.model)+'</div>'+
       '<div class="rule"><span class="v">'+esc(e.model)+'</span></div></div>'+
-    '<div class="chips">'+chip("storage",e.gb,"GB")+chip("ram",e.ram,t.ram)+chip("battery",e.mah,"mAh")+
-      (e.region ? chip("region",regionLabel(e.region),"") : '')+'</div>'+
+    '<div class="chips">'+chip("storage",e.gb,"GB","lg")+chip("ram",e.ram,t.ram,"lg")+chip("battery",e.mah,"mAh")+
+      (e.region ? chip("region",regionLabel(e.region),"","sm") : '')+'</div>'+
     '<div class="spacer"></div>'+
     '<div class="price">'+(st.curSym ? '<span class="kip">'+esc(st.curSym)+'</span>' : '')+
       '<span class="rule"><span class="v">'+esc(money(e.price,st.sep))+'</span></span></div>'+
