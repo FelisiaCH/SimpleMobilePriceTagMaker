@@ -58,12 +58,14 @@ need shortening, e.g. `Snap 8 Elite` and `MTK D9300`.
 
 | Source | Licence | Used for |
 |---|---|---|
-| [bsthen/device-models](https://github.com/bsthen/device-models) | Apache-2.0 | Android codes, from Google Play's supported-devices list |
-| [apple-device-identifiers](https://github.com/kyle-seongwoo-jun/apple-device-identifiers) | MIT | Apple identifiers (`iPhone15,3`) |
-| [List of iPhone models, Wikipedia](https://en.wikipedia.org/wiki/List_of_iPhone_models) | CC BY-SA 4.0 | the Apple A-numbers in `devices/apple-model-numbers.txt` |
-| [Simple Icons](https://simpleicons.org) | CC0 1.0 | contact brand marks and brand colours — see `icons/` |
-| [Material Symbols](https://github.com/google/material-design-icons) | Apache-2.0 | the spec and shop icons |
-| [Google Sans](https://fonts.google.com/specimen/Google+Sans) | SIL OFL 1.1 | the tag typeface — see `fonts/` |
+| [bsthen/device-models](https://github.com/bsthen/device-models) | Apache-2.0 | 18,721 Android codes — itself a transform of Google Play's public supported-devices list |
+| [apple-device-identifiers](https://github.com/kyle-seongwoo-jun/apple-device-identifiers) | MIT | 62 Apple identifiers (`iPhone15,3`) |
+| [List of iPhone models, Wikipedia](https://en.wikipedia.org/wiki/List_of_iPhone_models) | CC BY-SA 4.0 | 199 Apple A-numbers, used only to exclude them — `devices/apple-model-numbers.txt` |
+| [Simple Icons](https://simpleicons.org) | CC0 1.0 | 14 contact brand marks and their brand colours — `icons/` |
+| [Material Symbols](https://github.com/google/material-design-icons) | Apache-2.0 | 2 icons: the shop mark and the chipset chip |
+| [Google Sans](https://fonts.google.com/specimen/Google+Sans) | SIL OFL 1.1 | the tag typeface — `fonts/` |
+
+The storage, RAM and battery icons are drawn for this project.
 
 No specification data is shipped or scraped. What the app knows about a phone's
 specs is what the shop typed into it.
