@@ -1,4 +1,4 @@
-# HANDOFF — price-tags.html
+# HANDOFF — index.html
 
 Planning done in chat. Implementation from here is yours. Open PRs; do not merge.
 
@@ -7,7 +7,7 @@ Planning done in chat. Implementation from here is yours. Open PRs; do not merge
 Single-file, offline, print-first A4 price tag sheet generator for a phone shop.
 Editor UI on the left, live sheet preview on the right, `window.print()` gives exact A4.
 
-- `price-tags.html` — 1084 lines, 563 KB. The whole app.
+- `index.html` — 1095 lines, 527 KB. The whole app. Named `index.html` so GitHub Pages serves it at the site root.
 - Source of truth for the tag design: `Smartphone_Price_Tag_Sheet.pdf` (12-up handwrite template).
 
 ## Hard invariants
@@ -39,16 +39,15 @@ JS:
 
 | Line | Thing |
 |---|---|
-| 484 | `KEY = "kotags.v5"`, `PER_PAGE = 12` |
-| 485 | `DEFAULT_LOGO` — base64 PNG |
-| 488 | `L` — 20 tag languages × 5 keys (`model` `ram` `vat` `war` `per`, `rtl` on `ar`) |
-| 512 | `UI` — 4 menu languages, ~55 keys each |
-| 610 | `CUR` — 20 currency presets |
-| 627 | `defaults()` / `normalize()` — state shape + migration |
-| 714 | `PLAT` — 17 contact platforms, inline SVG badges |
-| 737 | device code lookup — `DB_N` `DB_C` `db()` `lookupModel()` |
-| 783 | `tagHTML()` — the printed tag |
-| 813 | `renderSheet()` / 832 `renderList()` / 864 `renderContacts()` |
+| 484 | `KEY = "kotags.v5"`, `PER_PAGE = 12`, `LOGO_MAX = 320` |
+| 487 | `L` — 20 tag languages × 5 keys (`model` `ram` `vat` `war` `per`, `rtl` on `ar`) |
+| 511 | `UI` — 4 menu languages, ~55 keys each |
+| 609 | `CUR` — 20 currency presets |
+| 626 | `defaults()` / `normalize()` — state shape + migration |
+| 713 | `PLAT` — 17 contact platforms, inline SVG badges |
+| 736 | device code lookup — `DB_N` `DB_C` `db()` `lookupModel()` |
+| 782 | `tagHTML()` — the printed tag |
+| 812 | `renderSheet()` / 831 `renderList()` / 863 `renderContacts()` |
 
 State: `{settings, entries}` → `localStorage["kotags.v5"]`, debounced 200ms.
 Render entry points: `boot()` → `applySettings()` `applyUI()` `renderList()` `renderSheet()`.
@@ -56,7 +55,7 @@ i18n applies via `data-t` attributes; `applyUI()` walks them.
 
 ## Embedded data provenance
 
-**Logo** — extracted from the source PDF page 1 with `pdfimages -all`, cropped to the circle bbox (10,42)–(691,723), outer ring beyond r=288/640 painted black to wipe a PhotoRoom watermark, resized 320px, circular alpha mask, base64 PNG.
+**Logo** — none bundled. `settings.logo` starts empty; the shop uploads its own and it is downscaled on a canvas to `LOGO_MAX` (320px long edge) PNG before it reaches `localStorage`. Upload size is deliberately ungated — the canvas step, not a byte limit, is what keeps state under the ~5 MB `localStorage` quota. With no upload the tag falls back to `ICON.logo`: Material Symbols "storefront" (filled, 24px) from google/material-design-icons, **Apache-2.0**, inlined as a path — no CDN, per invariant 1.
 
 **Device DB** — built from:
 - `github.com/bsthen/device-models` `devices.json` (Apache-2.0, auto-updated daily from Google Play's supported-devices CSV)
@@ -83,7 +82,7 @@ The database was generated ad-hoc. There is no reproducible script in the repo. 
 Write `tools/build-device-db.mjs`:
 - Fetch both upstream JSONs (URLs above).
 - Apply the six transforms in the provenance section, in that order.
-- Splice `DB_N` / `DB_C` into `price-tags.html` **by index, not `String.replace` with a computed replacement** — the replacement text contains `\u` and `\n` sequences that regex-replace APIs will reinterpret. This already broke the file once.
+- Splice `DB_N` / `DB_C` into `index.html` **by index, not `String.replace` with a computed replacement** — the replacement text contains `\u` and `\n` sequences that regex-replace APIs will reinterpret. This already broke the file once.
 - Print before/after counts for each drop stage.
 
 **AC:** `node tools/build-device-db.mjs` on a clean checkout produces a byte-identical file when upstream is unchanged. `node --check` on the extracted `<script>` passes.
