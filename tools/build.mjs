@@ -2,8 +2,12 @@
 /* tools/build.mjs — splice languages/ and devices/ back into index.html.
  *
  * index.html stays ONE self-contained file (invariant 1) and never fetches
- * anything at run time (invariant 2). These folders are the editable *source*,
- * not runtime assets — this script is what puts them into the app.
+ * anything at run time (invariant 2). languages/ and devices/ are the editable
+ * *source*, not runtime assets — this script is what puts them into the app.
+ *
+ * Device specs are NOT here. The app learns those from what the shop enters and
+ * keeps them in localStorage, so there is no file to maintain and no build step
+ * standing between a shop assistant and their own data.
  *
  * Splicing is done by line index. Never String.replace with a computed
  * replacement: the device data contains \n and \u sequences that replacement
@@ -56,48 +60,6 @@ for (const c of order.ui.slice(1)) {
   if (miss.length) problems.push(`languages/ui/${c}.json missing ${miss.length} key(s): ${miss.slice(0, 6).join(", ")}${miss.length > 6 ? " …" : ""}`);
   if (extra.length) problems.push(`languages/ui/${c}.json has key(s) absent from ${order.ui[0]}: ${extra.join(", ")}`);
 }
-
-// device specs — optional. One code may appear on several rows: X6725 covers
-// several storage sizes, while Samsung-style codes already pin the variant.
-const cgList = [], cgSeen = new Map();
-const rgList = [], rgSeen = new Map();
-const specRows = [];
-read("devices/specs.tsv").split("\n").forEach((raw, n) => {
-  const line = raw.replace(/\r$/, "");
-  if (!line.trim() || line.trim().startsWith("#")) return;
-  const where = `devices/specs.tsv line ${n + 1}`;
-  const f = line.split("\t");
-  if (f.length < 5) { problems.push(`${where}: expected at least 5 tab-separated fields, got ${f.length} — is it tabs and not spaces?`); return; }
-  const [rawCode, region = "", gb, ram, mah, cpu = "", gpu = ""] = f.map(x => x.trim());
-  const code = rawCode.toUpperCase().replace(/[^A-Z0-9]/g, "");
-  if (code.length < 3) { problems.push(`${where}: "${rawCode}" is not a usable code`); return; }
-  for (const [label, v] of [["storage", gb], ["ram", ram], ["battery", mah]])
-    if (v && !/^\d+$/.test(v)) problems.push(`${where}: ${label} "${v}" must be a whole number with no unit`);
-  let rg = "-";
-  if (region) {
-    if (!rgSeen.has(region)) { rgSeen.set(region, rgList.length); rgList.push(region); }
-    rg = rgSeen.get(region).toString(36);
-  }
-  let cg = "-";
-  if (cpu || gpu) {
-    const key = cpu + "\t" + gpu;
-    if (!cgSeen.has(key)) { cgSeen.set(key, cgList.length); cgList.push(key); }
-    cg = cgSeen.get(key).toString(36);
-  }
-  specRows.push([code, rg, gb || "-", ram || "-", mah || "-", cg].join(" "));
-});
-// an exact duplicate row is a typo; two rows differing in storage are the point
-const dupRow = specRows.filter((r, i) => specRows.indexOf(r) !== i);
-if (dupRow.length) problems.push(`devices/specs.tsv has ${dupRow.length} exactly duplicated row(s), e.g. "${dupRow[0]}"`);
-
-const regionNames = read("devices/regions.tsv").split("\n")
-  .map(l => l.replace(/\r$/, ""))
-  .filter(l => l.trim() && !l.trim().startsWith("#"))
-  .map((l, n) => {
-    const i = l.indexOf("\t");
-    if (i < 1 || !l.slice(i + 1).trim()) { problems.push(`devices/regions.tsv line ${n + 1}: expected "CODE<TAB>Label"`); return null; }
-    return l.slice(0, i).trim().toUpperCase() + "\t" + l.slice(i + 1).trim();
-  }).filter(Boolean);
 
 if (problems.length) {
   console.error("build failed:\n" + problems.map(p => "  - " + p).join("\n"));
@@ -172,10 +134,6 @@ at.L    = spliceBlock(/^var L = \{$/,  "};", genTag());
 at.UI   = spliceBlock(/^var UI = \{$/, "};", genUI());
 at.DB_N = spliceLine(/^var DB_N = /, `var DB_N = ${js(names)};`);
 at.DB_C = spliceLine(/^var DB_C = /, `var DB_C = ${js(codes)};`);
-at.DB_S = spliceLine(/^var DB_S = /, `var DB_S = ${js(specRows.join("\n"))};`);
-at.DB_CG = spliceLine(/^var DB_CG = /, `var DB_CG = ${js(cgList.join("\n"))};`);
-at.DB_RG = spliceLine(/^var DB_RG = /, `var DB_RG = ${js(rgList.join("\n"))};`);
-at.DB_RN = spliceLine(/^var DB_RN = /, `var DB_RN = ${js(regionNames.join("\n"))};`);
 
 const after = lines.join("\n");
 
@@ -187,12 +145,7 @@ console.log(`tag languages   ${String(order.tag.length).padStart(6)}   ${order.t
 console.log(`menu languages  ${String(order.ui.length).padStart(6)}   ${order.ui.join(" ")}  (${uiRef.length} keys each)`);
 console.log(`device names    ${String(nameCount).padStart(6)}`);
 console.log(`device codes    ${String(codeCount).padStart(6)}   ${blocked.size} Apple model numbers blocked, ${blockedHits.length} collision(s) removed${blockedHits.length ? ": " + blockedHits.join(", ") : ""}`);
-const specCodes = new Set(specRows.map(r => r.split(" ")[0]));
-const multi = [...specCodes].filter(c => specRows.filter(r => r.startsWith(c + " ")).length > 1);
-console.log(`region labels   ${String(regionNames.length).padStart(6)}   ${regionNames.map(r => r.split("\t")[0]).join(" ")}`);
-console.log(`spec rows       ${String(specRows.length).padStart(6)}   ${specCodes.size} code(s), ${multi.length} with more than one variant, ${rgList.length} region(s)`);
-console.log(`spliced at      L:${at.L[0]}  UI:${at.UI[0]}  DB_N:${at.DB_N[0]}  DB_C:${at.DB_C[0]}  DB_S:${at.DB_S[0]}`);
-if (!specRows.length) console.log(`                devices/specs.tsv is empty — the "fill specs" button stays hidden`);
+console.log(`spliced at      L:${at.L[0]}  UI:${at.UI[0]}  DB_N:${at.DB_N[0]}  DB_C:${at.DB_C[0]}`);
 
 if (codeCount % 1 !== 0) { console.error("devices/codes.txt has an odd number of tokens — every line must be \"CODE index\""); process.exit(1); }
 
