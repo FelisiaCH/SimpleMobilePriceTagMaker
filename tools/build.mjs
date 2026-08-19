@@ -89,6 +89,12 @@ const genUI = (width = 104) => "var UI = {\n" + order.ui.map(c => {
   return `  ${c}:{` + rows.map((r, i) => i ? "    " + r : r).join("\n") + "}";
 }).join(",\n") + "\n};";
 
+// The font ships inside index.html. Downloading it at build time would make the
+// build need a network; vendoring the woff2 keeps it reproducible offline.
+const fontB64 = readFileSync(join(ROOT, "fonts/GoogleSans-latin.woff2")).toString("base64");
+const fontFace = "@font-face{font-family:'Google Sans';font-style:normal;font-weight:400 700;" +
+  "font-display:swap;src:url(data:font/woff2;base64," + fontB64 + ") format('woff2')}";
+
 const names = read("devices/names.txt").replace(/\n$/, "");
 
 // Apple's A-numbers collide with Android device codes (A1724 is an iPhone SE and
@@ -132,6 +138,7 @@ function spliceLine(startRe, text) {
 const at = {};
 at.L    = spliceBlock(/^var L = \{$/,  "};", genTag());
 at.UI   = spliceBlock(/^var UI = \{$/, "};", genUI());
+at.font = spliceLine(/^@font-face\{font-family:'Google Sans'/, fontFace);
 at.DB_N = spliceLine(/^var DB_N = /, `var DB_N = ${js(names)};`);
 at.DB_C = spliceLine(/^var DB_C = /, `var DB_C = ${js(codes)};`);
 
@@ -143,6 +150,7 @@ const nameCount = names.split("\n").length;
 const codeCount = codes.split(" ").length / 2;
 console.log(`tag languages   ${String(order.tag.length).padStart(6)}   ${order.tag.join(" ")}`);
 console.log(`menu languages  ${String(order.ui.length).padStart(6)}   ${order.ui.join(" ")}  (${uiRef.length} keys each)`);
+console.log(`bundled font    ${String(Math.round(fontB64.length/1024)).padStart(6)} KB  Google Sans latin, SIL OFL 1.1`);
 console.log(`device names    ${String(nameCount).padStart(6)}`);
 console.log(`device codes    ${String(codeCount).padStart(6)}   ${blocked.size} Apple model numbers blocked, ${blockedHits.length} collision(s) removed${blockedHits.length ? ": " + blockedHits.join(", ") : ""}`);
 console.log(`spliced at      L:${at.L[0]}  UI:${at.UI[0]}  DB_N:${at.DB_N[0]}  DB_C:${at.DB_C[0]}`);
