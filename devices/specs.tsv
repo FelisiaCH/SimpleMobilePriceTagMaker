@@ -9,7 +9,11 @@
 #   region    free text, blank if it doesn't matter. iPhone part-number suffix
 #             (LL, ZP, TH, CH, JP) or Android Global / China / India.
 #   numbers   whole numbers, no units. Blank = leave that field alone.
-#   cpu/gpu   shown on screen only, never printed on the tag.
+#   cpu       printed on the tag, in a chip about 14.8mm wide — roughly 12
+#             characters. Most names fit whole: T606, Helio G99, Exynos 1480,
+#             A17 Pro. Only Qualcomm and MediaTek need shortening, e.g.
+#             Snap 8 Elite and MTK D9300 (both 12.4mm).
+#   gpu       kept for reference only, never printed — the tag has no room.
 #
 # Blank fields still need their tabs:  X6725<TAB><TAB>128<TAB>8<TAB><TAB><TAB>
 # Ships empty on purpose — fill it from the boxes you actually sell.
