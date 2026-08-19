@@ -1,9 +1,9 @@
 {
-  "_comment": "Order is load-bearing: it sets the order of the language dropdowns. First tag entry is the default.",
+  "_comment": "Order is load-bearing: it sets the order of the language dropdowns. English leads; defaults() also starts on en.",
   "tag": [
+    "en",
     "lo",
     "th",
-    "en",
     "zh",
     "zt",
     "vi",
