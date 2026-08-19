@@ -13,10 +13,12 @@
  * replacement: the device data contains \n and \u sequences that replacement
  * APIs reinterpret, which has already corrupted this file once.
  *
+ * languages/<code>/ holds tag.json (printed on the tag) and ui.json (the editor).
+ *
  *   node tools/build.mjs            rebuild index.html
  *   node tools/build.mjs --check    verify index.html is up to date, write nothing
  */
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -25,7 +27,7 @@ const HTML = join(ROOT, "index.html");
 const CHECK = process.argv.includes("--check");
 
 const read = p => readFileSync(join(ROOT, p), "utf8");
-const lang = (kind, code) => JSON.parse(read(`languages/${kind}/${code}.json`));
+const lang = (kind, code) => JSON.parse(read(`languages/${code}/${kind}.json`));
 // JSON.stringify emits literal UTF-8 and never \uXXXX escapes — invariant 6 holds
 // by construction, so no hand-written escape can be typo'd into a parse error.
 const js = v => JSON.stringify(v);
@@ -35,20 +37,24 @@ const js = v => JSON.stringify(v);
 const order = JSON.parse(read("languages/order.json"));
 const problems = [];
 
+// one folder per language: languages/<code>/tag.json + ui.json
+const onDisk = readdirSync(join(ROOT, "languages"), { withFileTypes: true })
+  .filter(d => d.isDirectory()).map(d => d.name).sort();
+for (const c of onDisk)
+  if (!order.tag.includes(c)) problems.push(`languages/${c}/ exists but ${c} is not in order.json — it would be ignored`);
 for (const kind of ["tag", "ui"]) {
-  const disk = readdirSync(join(ROOT, "languages", kind))
-    .filter(f => f.endsWith(".json")).map(f => f.slice(0, -5));
-  for (const c of order[kind])
-    if (!disk.includes(c)) problems.push(`languages/${kind}/${c}.json listed in order.json but missing`);
-  for (const c of disk)
-    if (!order[kind].includes(c)) problems.push(`languages/${kind}/${c}.json exists but is not in order.json — it would be ignored`);
+  for (const c of order[kind]) {
+    if (!onDisk.includes(c)) { problems.push(`languages/${c}/ listed in order.json but the folder is missing`); continue; }
+    if (!existsSync(join(ROOT, "languages", c, kind + ".json")))
+      problems.push(`languages/${c}/${kind}.json listed in order.json but missing`);
+  }
 }
 
 // every tag language needs the full key set; rtl is optional and only ar has it
 const TAG_KEYS = ["n", "model", "ram", "vat", "war", "per"];
 for (const c of order.tag) {
   const miss = TAG_KEYS.filter(k => !(k in lang("tag", c)));
-  if (miss.length) problems.push(`languages/tag/${c}.json missing: ${miss.join(", ")}`);
+  if (miss.length) problems.push(`languages/${c}/tag.json missing: ${miss.join(", ")}`);
 }
 // every menu language must cover the same keys as the first one, or applyUI()
 // silently renders undefined into the sidebar
@@ -57,8 +63,8 @@ for (const c of order.ui.slice(1)) {
   const have = lang("ui", c);
   const miss = uiRef.filter(k => !(k in have));
   const extra = Object.keys(have).filter(k => !uiRef.includes(k));
-  if (miss.length) problems.push(`languages/ui/${c}.json missing ${miss.length} key(s): ${miss.slice(0, 6).join(", ")}${miss.length > 6 ? " …" : ""}`);
-  if (extra.length) problems.push(`languages/ui/${c}.json has key(s) absent from ${order.ui[0]}: ${extra.join(", ")}`);
+  if (miss.length) problems.push(`languages/${c}/ui.json missing ${miss.length} key(s): ${miss.slice(0, 6).join(", ")}${miss.length > 6 ? " …" : ""}`);
+  if (extra.length) problems.push(`languages/${c}/ui.json has key(s) absent from ${order.ui[0]}: ${extra.join(", ")}`);
 }
 
 if (problems.length) {

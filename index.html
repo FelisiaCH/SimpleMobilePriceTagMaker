@@ -449,8 +449,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
           <div class="tbl-wrap" id="tblWrap">
             <table class="tbl">
               <thead><tr>
-                <th style="width:17%" data-t="h_model">Model</th>
-                <th style="width:8%" data-t="h_region">Origin</th>
+                <th style="width:21%" data-t="h_model">Model</th>
                 <th style="width:8%">GB</th>
                 <th style="width:8%" data-t="h_ram">RAM</th>
                 <th style="width:9%">mAh</th>
@@ -538,10 +537,9 @@ var UI = {
     textSize:"Text size", small:"Small", normal:"Normal", large:"Large", xlarge:"Extra large",
     cutGuides:"Cut guides", show:"Show", hide:"Hide", devices:"Devices",
     devicesDesc:"Type a model code like RMX3310 or SM-S256VL to get the real name. Any box left empty prints as a line to write on.",
-    h_model:"Model", h_region:"Origin", h_cpu:"CPU", h_ram:"RAM", h_price:"Price", h_warranty:"Warranty",
-    h_qty:"Tags", emptyTitle:"No devices yet",
-    emptyMsg:"Add one, or print the sheet blank and fill it in by hand.", st_tags:"Tags", st_pages:"Pages",
-    st_blank:"Blank slots", preview:"Preview", previewSize:"Preview size",
+    h_model:"Model", h_cpu:"CPU", h_ram:"RAM", h_price:"Price", h_warranty:"Warranty", h_qty:"Tags",
+    emptyTitle:"No devices yet", emptyMsg:"Add one, or print the sheet blank and fill it in by hand.",
+    st_tags:"Tags", st_pages:"Pages", st_blank:"Blank slots", preview:"Preview", previewSize:"Preview size",
     printNote:"Printing is always full size.",
     confirmClear:"Delete every device and reset the shop details?",
     badFile:"That file isn't a price tag file. Pick one exported from here.",
@@ -560,9 +558,9 @@ var UI = {
     large:"ໃຫຍ່", xlarge:"ໃຫຍ່ພິເສດ", cutGuides:"ເສັ້ນຕັດ", show:"ສະແດງ", hide:"ເຊື່ອງ",
     devices:"ລາຍການເຄື່ອງ",
     devicesDesc:"ພິມລະຫັດລຸ້ນ ເຊັ່ນ RMX3310 ຫຼື SM-S256VL ຈະໄດ້ຊື່ຈິງ. ຊ່ອງທີ່ປ່ອຍຫວ່າງ ຈະພິມເປັນເສັ້ນສຳລັບຂຽນມື.",
-    h_model:"ລຸ້ນເຄື່ອງ", h_region:"ປະເທດ", h_cpu:"ຊິບ", h_ram:"ແຣມ", h_price:"ລາຄາ", h_warranty:"ຮັບປະກັນ",
-    h_qty:"ຈຳນວນ", emptyTitle:"ຍັງບໍ່ມີເຄື່ອງ", emptyMsg:"ເພີ່ມເຄື່ອງ ຫຼື ພິມແຜ່ນເປົ່າໄວ້ຂຽນມື.",
-    st_tags:"ປ້າຍ", st_pages:"ໜ້າ", st_blank:"ຊ່ອງຫວ່າງ", preview:"ຕົວຢ່າງ", previewSize:"ຂະໜາດຕົວຢ່າງ",
+    h_model:"ລຸ້ນເຄື່ອງ", h_cpu:"ຊິບ", h_ram:"ແຣມ", h_price:"ລາຄາ", h_warranty:"ຮັບປະກັນ", h_qty:"ຈຳນວນ",
+    emptyTitle:"ຍັງບໍ່ມີເຄື່ອງ", emptyMsg:"ເພີ່ມເຄື່ອງ ຫຼື ພິມແຜ່ນເປົ່າໄວ້ຂຽນມື.", st_tags:"ປ້າຍ",
+    st_pages:"ໜ້າ", st_blank:"ຊ່ອງຫວ່າງ", preview:"ຕົວຢ່າງ", previewSize:"ຂະໜາດຕົວຢ່າງ",
     printNote:"ຕອນພິມຈະເປັນຂະໜາດຈິງສະເໝີ.", confirmClear:"ລຶບເຄື່ອງທັງໝົດ ແລະ ຕັ້ງຂໍ້ມູນຮ້ານຄືນບໍ?",
     badFile:"ໄຟລ໌ນີ້ບໍ່ແມ່ນໄຟລ໌ປ້າຍລາຄາ. ເລືອກໄຟລ໌ທີ່ບັນທຶກຈາກນີ້.",
     badImage:"ອ່ານຮູບນີ້ບໍ່ໄດ້. ລອງໃຊ້ PNG ຫຼື JPG."},
@@ -580,10 +578,9 @@ var UI = {
     large:"ใหญ่", xlarge:"ใหญ่พิเศษ", cutGuides:"เส้นตัด", show:"แสดง", hide:"ซ่อน",
     devices:"รายการเครื่อง",
     devicesDesc:"พิมพ์รหัสรุ่น เช่น RMX3310 หรือ SM-S256VL เพื่อหาชื่อจริง ช่องที่เว้นว่างจะพิมพ์เป็นเส้นสำหรับเขียนมือ",
-    h_model:"รุ่นเครื่อง", h_region:"ประเทศ", h_cpu:"ชิป", h_ram:"แรม", h_price:"ราคา",
-    h_warranty:"รับประกัน", h_qty:"จำนวน", emptyTitle:"ยังไม่มีเครื่อง",
-    emptyMsg:"เพิ่มเครื่อง หรือพิมพ์แผ่นเปล่าไว้เขียนมือ", st_tags:"ป้าย", st_pages:"หน้า",
-    st_blank:"ช่องว่าง", preview:"ตัวอย่าง", previewSize:"ขนาดตัวอย่าง",
+    h_model:"รุ่นเครื่อง", h_cpu:"ชิป", h_ram:"แรม", h_price:"ราคา", h_warranty:"รับประกัน", h_qty:"จำนวน",
+    emptyTitle:"ยังไม่มีเครื่อง", emptyMsg:"เพิ่มเครื่อง หรือพิมพ์แผ่นเปล่าไว้เขียนมือ", st_tags:"ป้าย",
+    st_pages:"หน้า", st_blank:"ช่องว่าง", preview:"ตัวอย่าง", previewSize:"ขนาดตัวอย่าง",
     printNote:"เวลาพิมพ์จะเป็นขนาดจริงเสมอ", confirmClear:"ลบเครื่องทั้งหมดและรีเซ็ตข้อมูลร้านหรือไม่?",
     badFile:"ไฟล์นี้ไม่ใช่ไฟล์ป้ายราคา เลือกไฟล์ที่บันทึกจากที่นี่",
     badImage:"อ่านไฟล์รูปนี้ไม่ได้ ลองใช้ PNG หรือ JPG"},
@@ -596,11 +593,353 @@ var UI = {
     resetColors:"重置颜色", c_brand:"店名", c_model:"机型文字", c_spec:"参数标签", c_price:"价格", c_meta:"小字", c_rule:"线条",
     c_contact:"联系方式", c_bg:"背景", options:"版面设置", sep:"千位分隔符", textSize:"字号", small:"小", normal:"标准",
     large:"大", xlarge:"特大", cutGuides:"裁切线", show:"显示", hide:"隐藏", devices:"机型列表",
-    devicesDesc:"输入机型代码如 RMX3310 或 SM-S256VL 可查出真实型号。留空的栏位会打印成手写用的横线。", h_model:"机型", h_region:"地区",
-    h_cpu:"芯片", h_ram:"内存", h_price:"价格", h_warranty:"保修", h_qty:"数量", emptyTitle:"还没有机型",
+    devicesDesc:"输入机型代码如 RMX3310 或 SM-S256VL 可查出真实型号。留空的栏位会打印成手写用的横线。", h_model:"机型", h_cpu:"芯片",
+    h_ram:"内存", h_price:"价格", h_warranty:"保修", h_qty:"数量", emptyTitle:"还没有机型",
     emptyMsg:"添加一个，或直接打印空白表格手写填写。", st_tags:"标签", st_pages:"页数", st_blank:"空位", preview:"预览",
     previewSize:"预览大小", printNote:"打印始终为实际尺寸。", confirmClear:"删除所有机型并重置店铺信息？",
-    badFile:"这不是价格标签文件。请选择从这里导出的文件。", badImage:"无法读取该图片。请尝试 PNG 或 JPG。"}
+    badFile:"这不是价格标签文件。请选择从这里导出的文件。", badImage:"无法读取该图片。请尝试 PNG 或 JPG。"},
+  zt:{n:"繁體中文", title:"價格標籤", sheetMeta:"A4 · 每頁 12 張", print:"列印", add:"新增機型", export:"匯出檔案", open:"開啟檔案",
+    clear:"全部清除", theme:"主題", language:"語言", tagLang:"標籤語言", uiLang:"選單語言", currency:"貨幣",
+    curCustom:"符號與名稱", shop:"店家資訊", storeName:"店名", phone:"電話", facebook:"Facebook", logoImage:"標誌圖片",
+    chooseFile:"選擇檔案", reset:"重設", contacts:"聯絡方式", addContact:"新增聯絡方式", useName:"使用", useSpecs:"填入規格",
+    noMatch:"清單中沒有", searchWeb:"上網搜尋", ph_store:"您的店名", ph_phone:"您的電話號碼", ph_your:"您的 {p}",
+    ph_email:"您的電子郵件", ph_website:"您的網站", p_phone:"電話", p_email:"電子郵件", p_website:"網站", colors:"文字顏色",
+    resetColors:"重設顏色", c_brand:"店名", c_model:"機型文字", c_spec:"規格標籤", c_price:"價格", c_meta:"小字", c_rule:"線條",
+    c_contact:"聯絡方式", c_bg:"背景", options:"版面設定", sep:"千分位符號", textSize:"文字大小", small:"小", normal:"標準",
+    large:"大", xlarge:"特大", cutGuides:"裁切線", show:"顯示", hide:"隱藏", devices:"機型清單",
+    devicesDesc:"輸入機型代碼如 RMX3310 或 SM-S256VL 可查出真實型號。留空的欄位會列印成手寫用的橫線。", h_model:"機型", h_cpu:"晶片",
+    h_ram:"RAM", h_price:"價格", h_warranty:"保固", h_qty:"數量", emptyTitle:"尚無機型",
+    emptyMsg:"新增一台，或直接列印空白表格手寫填寫。", st_tags:"標籤", st_pages:"頁數", st_blank:"空位", preview:"預覽",
+    previewSize:"預覽大小", printNote:"列印時一律為實際尺寸。", confirmClear:"刪除所有機型並重設店家資訊？",
+    badFile:"這不是價格標籤檔案。請選擇從這裡匯出的檔案。", badImage:"無法讀取該圖片。請改用 PNG 或 JPG。"},
+  vi:{n:"Tiếng Việt", title:"Nhãn giá", sheetMeta:"A4 · 12 nhãn/trang", print:"In", add:"Thêm máy",
+    export:"Xuất tệp", open:"Mở tệp", clear:"Xoá tất cả", theme:"Giao diện", language:"Ngôn ngữ",
+    tagLang:"Ngôn ngữ nhãn", uiLang:"Ngôn ngữ menu", currency:"Tiền tệ", curCustom:"Ký hiệu & tên",
+    shop:"Thông tin cửa hàng", storeName:"Tên cửa hàng", phone:"Điện thoại", facebook:"Facebook",
+    logoImage:"Ảnh logo", chooseFile:"Chọn tệp", reset:"Đặt lại", contacts:"Liên hệ",
+    addContact:"Thêm liên hệ", useName:"Dùng", useSpecs:"Điền thông số", noMatch:"Không có trong danh sách",
+    searchWeb:"Tìm trên web", ph_store:"Tên cửa hàng của bạn", ph_phone:"Số điện thoại của bạn",
+    ph_your:"{p} của bạn", ph_email:"Email của bạn", ph_website:"Website của bạn", p_phone:"Điện thoại",
+    p_email:"Email", p_website:"Website", colors:"Màu chữ", resetColors:"Đặt lại màu",
+    c_brand:"Tên cửa hàng", c_model:"Tên dòng máy", c_spec:"Nhãn thông số", c_price:"Giá", c_meta:"Chữ nhỏ",
+    c_rule:"Đường kẻ", c_contact:"Liên hệ", c_bg:"Nền", options:"Tuỳ chọn trang in",
+    sep:"Dấu phân cách hàng nghìn", textSize:"Cỡ chữ", small:"Nhỏ", normal:"Vừa", large:"Lớn",
+    xlarge:"Rất lớn", cutGuides:"Đường cắt", show:"Hiện", hide:"Ẩn", devices:"Danh sách máy",
+    devicesDesc:"Nhập mã máy như RMX3310 hoặc SM-S256VL để lấy tên thật. Ô để trống sẽ in thành dòng kẻ để viết tay.",
+    h_model:"Dòng máy", h_cpu:"Chip", h_ram:"RAM", h_price:"Giá", h_warranty:"Bảo hành", h_qty:"Số nhãn",
+    emptyTitle:"Chưa có máy nào", emptyMsg:"Thêm một máy, hoặc in trang trắng rồi viết tay.",
+    st_tags:"Nhãn", st_pages:"Trang", st_blank:"Ô trống", preview:"Xem trước", previewSize:"Cỡ xem trước",
+    printNote:"Khi in luôn ở kích thước thật.",
+    confirmClear:"Xoá toàn bộ máy và đặt lại thông tin cửa hàng?",
+    badFile:"Tệp này không phải tệp nhãn giá. Hãy chọn tệp đã xuất từ đây.",
+    badImage:"Không đọc được ảnh này. Hãy thử PNG hoặc JPG."},
+  km:{n:"ខ្មែរ", title:"ស្លាកតម្លៃ", sheetMeta:"A4 · 12 ក្នុងមួយទំព័រ", print:"បោះពុម្ព",
+    add:"បន្ថែមទូរស័ព្ទ", export:"នាំចេញឯកសារ", open:"បើកឯកសារ", clear:"លុបទាំងអស់", theme:"រូបរាង",
+    language:"ភាសា", tagLang:"ភាសាស្លាក", uiLang:"ភាសាម៉ឺនុយ", currency:"រូបិយប័ណ្ណ",
+    curCustom:"និមិត្តសញ្ញា និងឈ្មោះ", shop:"ព័ត៌មានហាង", storeName:"ឈ្មោះហាង", phone:"ទូរស័ព្ទ",
+    facebook:"Facebook", logoImage:"រូបឡូហ្គោ", chooseFile:"ជ្រើសឯកសារ", reset:"កំណត់ឡើងវិញ",
+    contacts:"ទំនាក់ទំនង", addContact:"បន្ថែមទំនាក់ទំនង", useName:"ប្រើ", useSpecs:"បំពេញលក្ខណៈ",
+    noMatch:"គ្មានក្នុងបញ្ជី", searchWeb:"ស្វែងរកលើអ៊ីនធឺណិត", ph_store:"ឈ្មោះហាងរបស់អ្នក",
+    ph_phone:"លេខទូរស័ព្ទរបស់អ្នក", ph_your:"{p} របស់អ្នក", ph_email:"អ៊ីមែលរបស់អ្នក",
+    ph_website:"គេហទំព័ររបស់អ្នក", p_phone:"ទូរស័ព្ទ", p_email:"អ៊ីមែល", p_website:"គេហទំព័រ",
+    colors:"ពណ៌អក្សរ", resetColors:"កំណត់ពណ៌ឡើងវិញ", c_brand:"ឈ្មោះហាង", c_model:"អក្សរម៉ូដែល",
+    c_spec:"ស្លាកលក្ខណៈ", c_price:"តម្លៃ", c_meta:"អក្សរតូច", c_rule:"បន្ទាត់", c_contact:"ទំនាក់ទំនង",
+    c_bg:"ផ្ទៃខាងក្រោយ", options:"ការកំណត់សន្លឹក", sep:"សញ្ញាបំបែកខ្ទង់ពាន់", textSize:"ទំហំអក្សរ",
+    small:"តូច", normal:"ធម្មតា", large:"ធំ", xlarge:"ធំពិសេស", cutGuides:"បន្ទាត់កាត់", show:"បង្ហាញ",
+    hide:"លាក់", devices:"បញ្ជីទូរស័ព្ទ",
+    devicesDesc:"វាយកូដម៉ូដែលដូចជា RMX3310 ឬ SM-S256VL ដើម្បីទទួលបានឈ្មោះពិត។ ប្រអប់ណាដែលទុកទំនេរ នឹងបោះពុម្ពជាបន្ទាត់សម្រាប់សរសេរដោយដៃ។",
+    h_model:"ម៉ូដែល", h_cpu:"CPU", h_ram:"RAM", h_price:"តម្លៃ", h_warranty:"ធានា", h_qty:"ចំនួន",
+    emptyTitle:"មិនទាន់មានទូរស័ព្ទ", emptyMsg:"បន្ថែមមួយ ឬបោះពុម្ពសន្លឹកទទេ រួចសរសេរដោយដៃ។",
+    st_tags:"ស្លាក", st_pages:"ទំព័រ", st_blank:"ប្រអប់ទំនេរ", preview:"មើលជាមុន",
+    previewSize:"ទំហំមើលជាមុន", printNote:"ការបោះពុម្ពតែងតែជាទំហំពិត។",
+    confirmClear:"លុបទូរស័ព្ទទាំងអស់ និងកំណត់ព័ត៌មានហាងឡើងវិញ?",
+    badFile:"ឯកសារនេះមិនមែនជាឯកសារស្លាកតម្លៃទេ។ សូមជ្រើសឯកសារដែលនាំចេញពីទីនេះ។",
+    badImage:"មិនអាចអានរូបភាពនេះបានទេ។ សូមសាកល្បង PNG ឬ JPG។"},
+  my:{n:"မြန်မာ", title:"ဈေးနှုန်းတံဆိပ်", sheetMeta:"A4 · တစ်မျက်နှာ 12 ခု", print:"ပရင့်ထုတ်",
+    add:"ဖုန်းထည့်", export:"ဖိုင်ထုတ်", open:"ဖိုင်ဖွင့်", clear:"အားလုံးဖျက်", theme:"အပြင်အဆင်",
+    language:"ဘာသာစကား", tagLang:"တံဆိပ်ဘာသာစကား", uiLang:"မီနူးဘာသာစကား", currency:"ငွေကြေး",
+    curCustom:"သင်္ကေတနှင့် အမည်", shop:"ဆိုင်အချက်အလက်", storeName:"ဆိုင်အမည်", phone:"ဖုန်းနံပါတ်",
+    facebook:"Facebook", logoImage:"လိုဂိုပုံ", chooseFile:"ဖိုင်ရွေးရန်", reset:"မူလပြန်",
+    contacts:"ဆက်သွယ်ရန်", addContact:"ဆက်သွယ်ရန်ထည့်", useName:"သုံးမည်", useSpecs:"စပက်ဖြည့်",
+    noMatch:"စာရင်းထဲမရှိပါ", searchWeb:"အင်တာနက်တွင်ရှာ", ph_store:"သင့်ဆိုင်အမည်",
+    ph_phone:"သင့်ဖုန်းနံပါတ်", ph_your:"သင့် {p}", ph_email:"သင့်အီးမေးလ်", ph_website:"သင့်ဝဘ်ဆိုက်",
+    p_phone:"ဖုန်း", p_email:"အီးမေးလ်", p_website:"ဝဘ်ဆိုက်", colors:"စာလုံးအရောင်",
+    resetColors:"အရောင်မူလပြန်", c_brand:"ဆိုင်အမည်", c_model:"မော်ဒယ်စာသား", c_spec:"စပက်ခေါင်းစဉ်",
+    c_price:"ဈေးနှုန်း", c_meta:"စာလုံးသေး", c_rule:"မျဉ်းများ", c_contact:"ဆက်သွယ်ရန်", c_bg:"နောက်ခံ",
+    options:"စာရွက်ဆက်တင်", sep:"ထောင်ဂဏန်းခြားသင်္ကေတ", textSize:"စာလုံးအရွယ်", small:"သေး",
+    normal:"ပုံမှန်", large:"ကြီး", xlarge:"အလွန်ကြီး", cutGuides:"ဖြတ်မျဉ်း", show:"ပြရန်",
+    hide:"ဖျောက်ရန်", devices:"ဖုန်းစာရင်း",
+    devicesDesc:"RMX3310 သို့မဟုတ် SM-S256VL ကဲ့သို့ မော်ဒယ်ကုဒ်ရိုက်ထည့်ပါက အမည်အစစ်ပေါ်လာမည်။ ဗလာထားသောကွက်များကို လက်ရေးဖြည့်ရန် မျဉ်းအဖြစ် ပရင့်ထွက်မည်။",
+    h_model:"မော်ဒယ်", h_cpu:"CPU", h_ram:"RAM", h_price:"ဈေးနှုန်း", h_warranty:"အာမခံ", h_qty:"အရေအတွက်",
+    emptyTitle:"ဖုန်းမရှိသေးပါ",
+    emptyMsg:"တစ်လုံးထည့်ပါ၊ သို့မဟုတ် စာရွက်ဗလာပရင့်ထုတ်ပြီး လက်ဖြင့်ဖြည့်ပါ။", st_tags:"တံဆိပ်",
+    st_pages:"မျက်နှာ", st_blank:"နေရာလွတ်", preview:"အစမ်းကြည့်", previewSize:"အစမ်းကြည့်အရွယ်",
+    printNote:"ပရင့်ထုတ်ချိန်တွင် အရွယ်အစားအပြည့်ဖြစ်သည်။",
+    confirmClear:"ဖုန်းအားလုံးဖျက်ပြီး ဆိုင်အချက်အလက်များ မူလပြန်မလား?",
+    badFile:"ဤဖိုင်သည် ဈေးနှုန်းတံဆိပ်ဖိုင် မဟုတ်ပါ။ ဤနေရာမှ ထုတ်ထားသောဖိုင်ကို ရွေးပါ။",
+    badImage:"ဤပုံကို မဖတ်နိုင်ပါ။ PNG သို့မဟုတ် JPG ဖြင့် စမ်းကြည့်ပါ။"},
+  ja:{n:"日本語", title:"値札", sheetMeta:"A4 · 1ページ12枚", print:"印刷", add:"機種を追加", export:"ファイルを書き出し",
+    open:"ファイルを開く", clear:"すべて消去", theme:"テーマ", language:"言語", tagLang:"値札の言語", uiLang:"メニューの言語",
+    currency:"通貨", curCustom:"記号と名称", shop:"店舗情報", storeName:"店名", phone:"電話", facebook:"Facebook",
+    logoImage:"ロゴ画像", chooseFile:"ファイルを選択", reset:"リセット", contacts:"連絡先", addContact:"連絡先を追加", useName:"使う",
+    useSpecs:"スペックを入力", noMatch:"リストにない", searchWeb:"ウェブで検索", ph_store:"店名を入力", ph_phone:"電話番号を入力",
+    ph_your:"{p} を入力", ph_email:"メールアドレスを入力", ph_website:"ウェブサイトを入力", p_phone:"電話", p_email:"メール",
+    p_website:"ウェブサイト", colors:"文字の色", resetColors:"色をリセット", c_brand:"店名", c_model:"機種名", c_spec:"スペック項目",
+    c_price:"価格", c_meta:"小さい文字", c_rule:"罫線", c_contact:"連絡先", c_bg:"背景", options:"用紙の設定", sep:"桁区切り",
+    textSize:"文字サイズ", small:"小", normal:"標準", large:"大", xlarge:"特大", cutGuides:"裁断線", show:"表示",
+    hide:"非表示", devices:"機種一覧",
+    devicesDesc:"RMX3310 や SM-S256VL のような型番を入力すると正式な機種名が出ます。空欄のままにした欄は、手書き用の線として印刷されます。", h_model:"機種",
+    h_cpu:"CPU", h_ram:"RAM", h_price:"価格", h_warranty:"保証", h_qty:"枚数", emptyTitle:"機種がありません",
+    emptyMsg:"追加するか、空白のまま印刷して手書きで記入してください。", st_tags:"値札", st_pages:"ページ", st_blank:"空き枠", preview:"プレビュー",
+    previewSize:"プレビューの大きさ", printNote:"印刷は常に原寸大です。", confirmClear:"すべての機種を削除して店舗情報をリセットしますか？",
+    badFile:"このファイルは値札ファイルではありません。ここから書き出したファイルを選んでください。", badImage:"画像を読み込めませんでした。PNG または JPG をお試しください。"},
+  ko:{n:"한국어", title:"가격표", sheetMeta:"A4 · 한 장에 12개", print:"인쇄", add:"기기 추가", export:"파일 내보내기",
+    open:"파일 열기", clear:"모두 지우기", theme:"테마", language:"언어", tagLang:"가격표 언어", uiLang:"메뉴 언어",
+    currency:"통화", curCustom:"기호와 이름", shop:"매장 정보", storeName:"매장 이름", phone:"전화", facebook:"Facebook",
+    logoImage:"로고 이미지", chooseFile:"파일 선택", reset:"초기화", contacts:"연락처", addContact:"연락처 추가", useName:"사용",
+    useSpecs:"사양 채우기", noMatch:"목록에 없음", searchWeb:"웹에서 검색", ph_store:"매장 이름 입력", ph_phone:"전화번호 입력",
+    ph_your:"{p} 입력", ph_email:"이메일 입력", ph_website:"웹사이트 입력", p_phone:"전화", p_email:"이메일",
+    p_website:"웹사이트", colors:"글자 색", resetColors:"색 초기화", c_brand:"매장 이름", c_model:"모델 글자", c_spec:"사양 항목",
+    c_price:"가격", c_meta:"작은 글씨", c_rule:"선", c_contact:"연락처", c_bg:"배경", options:"용지 설정", sep:"천 단위 구분",
+    textSize:"글자 크기", small:"작게", normal:"보통", large:"크게", xlarge:"아주 크게", cutGuides:"재단선", show:"표시",
+    hide:"숨김", devices:"기기 목록",
+    devicesDesc:"RMX3310 또는 SM-S256VL 같은 모델 코드를 입력하면 정식 이름이 나옵니다. 비워 둔 칸은 손으로 적을 수 있는 줄로 인쇄됩니다.",
+    h_model:"모델", h_cpu:"CPU", h_ram:"RAM", h_price:"가격", h_warranty:"보증", h_qty:"수량",
+    emptyTitle:"기기가 없습니다", emptyMsg:"하나 추가하거나, 빈 용지로 인쇄해 손으로 채우세요.", st_tags:"가격표", st_pages:"페이지",
+    st_blank:"빈 칸", preview:"미리보기", previewSize:"미리보기 크기", printNote:"인쇄는 항상 실제 크기입니다.",
+    confirmClear:"모든 기기를 삭제하고 매장 정보를 초기화할까요?", badFile:"가격표 파일이 아닙니다. 여기에서 내보낸 파일을 선택하세요.",
+    badImage:"이미지를 읽을 수 없습니다. PNG 또는 JPG를 사용해 보세요."},
+  fr:{n:"Français", title:"Étiquettes de prix", sheetMeta:"A4 · 12 par page", print:"Imprimer",
+    add:"Ajouter un appareil", export:"Exporter le fichier", open:"Ouvrir un fichier", clear:"Tout effacer",
+    theme:"Thème", language:"Langue", tagLang:"Langue des étiquettes", uiLang:"Langue du menu",
+    currency:"Devise", curCustom:"Symbole et nom", shop:"Infos de la boutique",
+    storeName:"Nom de la boutique", phone:"Téléphone", facebook:"Facebook", logoImage:"Image du logo",
+    chooseFile:"Choisir un fichier", reset:"Réinitialiser", contacts:"Contacts",
+    addContact:"Ajouter un contact", useName:"Utiliser", useSpecs:"Remplir les specs",
+    noMatch:"Absent de la liste", searchWeb:"Chercher sur le web", ph_store:"Le nom de votre boutique",
+    ph_phone:"Votre numéro de téléphone", ph_your:"Votre {p}", ph_email:"Votre adresse e-mail",
+    ph_website:"Votre site web", p_phone:"Téléphone", p_email:"E-mail", p_website:"Site web",
+    colors:"Couleurs du texte", resetColors:"Réinitialiser les couleurs", c_brand:"Nom de la boutique",
+    c_model:"Texte du modèle", c_spec:"Libellés des specs", c_price:"Prix", c_meta:"Petits caractères",
+    c_rule:"Lignes", c_contact:"Contact", c_bg:"Fond", options:"Options de la feuille",
+    sep:"Séparateur de milliers", textSize:"Taille du texte", small:"Petit", normal:"Normal", large:"Grand",
+    xlarge:"Très grand", cutGuides:"Repères de coupe", show:"Afficher", hide:"Masquer", devices:"Appareils",
+    devicesDesc:"Saisissez un code modèle comme RMX3310 ou SM-S256VL pour obtenir le vrai nom. Toute case laissée vide s'imprime en ligne à remplir à la main.",
+    h_model:"Modèle", h_cpu:"CPU", h_ram:"RAM", h_price:"Prix", h_warranty:"Garantie", h_qty:"Qté",
+    emptyTitle:"Aucun appareil",
+    emptyMsg:"Ajoutez-en un, ou imprimez la feuille vierge et remplissez-la à la main.",
+    st_tags:"Étiquettes", st_pages:"Pages", st_blank:"Cases vides", preview:"Aperçu",
+    previewSize:"Taille de l'aperçu", printNote:"L'impression est toujours en taille réelle.",
+    confirmClear:"Supprimer tous les appareils et réinitialiser les infos de la boutique ?",
+    badFile:"Ce fichier n'est pas un fichier d'étiquettes. Choisissez-en un exporté d'ici.",
+    badImage:"Impossible de lire cette image. Essayez un PNG ou un JPG."},
+  es:{n:"Español", title:"Etiquetas de precio", sheetMeta:"A4 · 12 por página", print:"Imprimir",
+    add:"Añadir dispositivo", export:"Exportar archivo", open:"Abrir archivo", clear:"Borrar todo",
+    theme:"Tema", language:"Idioma", tagLang:"Idioma de las etiquetas", uiLang:"Idioma del menú",
+    currency:"Moneda", curCustom:"Símbolo y nombre", shop:"Datos de la tienda",
+    storeName:"Nombre de la tienda", phone:"Teléfono", facebook:"Facebook", logoImage:"Imagen del logo",
+    chooseFile:"Elegir archivo", reset:"Restablecer", contacts:"Contactos", addContact:"Añadir contacto",
+    useName:"Usar", useSpecs:"Rellenar specs", noMatch:"No está en la lista", searchWeb:"Buscar en la web",
+    ph_store:"El nombre de tu tienda", ph_phone:"Tu número de teléfono", ph_your:"Tu {p}",
+    ph_email:"Tu correo electrónico", ph_website:"Tu sitio web", p_phone:"Teléfono", p_email:"Correo",
+    p_website:"Sitio web", colors:"Colores del texto", resetColors:"Restablecer colores",
+    c_brand:"Nombre de la tienda", c_model:"Texto del modelo", c_spec:"Nombres de specs", c_price:"Precio",
+    c_meta:"Letra pequeña", c_rule:"Líneas", c_contact:"Contacto", c_bg:"Fondo",
+    options:"Opciones de la hoja", sep:"Separador de miles", textSize:"Tamaño del texto", small:"Pequeño",
+    normal:"Normal", large:"Grande", xlarge:"Muy grande", cutGuides:"Guías de corte", show:"Mostrar",
+    hide:"Ocultar", devices:"Dispositivos",
+    devicesDesc:"Escribe un código de modelo como RMX3310 o SM-S256VL para obtener el nombre real. Cualquier casilla vacía se imprime como una línea para escribir a mano.",
+    h_model:"Modelo", h_cpu:"CPU", h_ram:"RAM", h_price:"Precio", h_warranty:"Garantía", h_qty:"Cant.",
+    emptyTitle:"Aún no hay dispositivos",
+    emptyMsg:"Añade uno, o imprime la hoja en blanco y rellénala a mano.", st_tags:"Etiquetas",
+    st_pages:"Páginas", st_blank:"Espacios vacíos", preview:"Vista previa",
+    previewSize:"Tamaño de la vista previa", printNote:"La impresión siempre es a tamaño real.",
+    confirmClear:"¿Borrar todos los dispositivos y restablecer los datos de la tienda?",
+    badFile:"Ese archivo no es un archivo de etiquetas. Elige uno exportado desde aquí.",
+    badImage:"No se pudo leer esa imagen. Prueba con un PNG o un JPG."},
+  pt:{n:"Português", title:"Etiquetas de preço", sheetMeta:"A4 · 12 por página", print:"Imprimir",
+    add:"Adicionar aparelho", export:"Exportar ficheiro", open:"Abrir ficheiro", clear:"Limpar tudo",
+    theme:"Tema", language:"Idioma", tagLang:"Idioma da etiqueta", uiLang:"Idioma do menu",
+    currency:"Moeda", curCustom:"Símbolo e nome", shop:"Dados da loja", storeName:"Nome da loja",
+    phone:"Telefone", facebook:"Facebook", logoImage:"Imagem do logótipo", chooseFile:"Escolher ficheiro",
+    reset:"Repor", contacts:"Contactos", addContact:"Adicionar contacto", useName:"Usar",
+    useSpecs:"Preencher specs", noMatch:"Não está na lista", searchWeb:"Pesquisar na Internet",
+    ph_store:"O nome da sua loja aqui", ph_phone:"O seu número de telefone aqui", ph_your:"O seu {p} aqui",
+    ph_email:"O seu e-mail aqui", ph_website:"O seu site aqui", p_phone:"Telefone", p_email:"E-mail",
+    p_website:"Site", colors:"Cores do texto", resetColors:"Repor cores", c_brand:"Nome da loja",
+    c_model:"Texto do modelo", c_spec:"Rótulos das specs", c_price:"Preço", c_meta:"Letra pequena",
+    c_rule:"Linhas", c_contact:"Contacto", c_bg:"Fundo", options:"Opções da folha",
+    sep:"Separador de milhares", textSize:"Tamanho do texto", small:"Pequeno", normal:"Normal",
+    large:"Grande", xlarge:"Muito grande", cutGuides:"Guias de corte", show:"Mostrar", hide:"Ocultar",
+    devices:"Aparelhos",
+    devicesDesc:"Escreva um código de modelo como RMX3310 ou SM-S256VL para obter o nome real. Qualquer campo deixado vazio é impresso como uma linha para escrever à mão.",
+    h_model:"Modelo", h_cpu:"CPU", h_ram:"RAM", h_price:"Preço", h_warranty:"Garantia", h_qty:"Etiquetas",
+    emptyTitle:"Ainda sem aparelhos",
+    emptyMsg:"Adicione um, ou imprima a folha em branco e preencha à mão.", st_tags:"Etiquetas",
+    st_pages:"Páginas", st_blank:"Espaços vazios", preview:"Pré-visualização",
+    previewSize:"Tamanho da pré-visualização", printNote:"A impressão é sempre em tamanho real.",
+    confirmClear:"Eliminar todos os aparelhos e repor os dados da loja?",
+    badFile:"Esse ficheiro não é um ficheiro de etiquetas de preço. Escolha um exportado daqui.",
+    badImage:"Não foi possível ler essa imagem. Experimente um PNG ou JPG."},
+  de:{n:"Deutsch", title:"Preisschilder", sheetMeta:"A4 · 12 pro Seite", print:"Drucken",
+    add:"Gerät hinzufügen", export:"Datei exportieren", open:"Datei öffnen", clear:"Alles löschen",
+    theme:"Design", language:"Sprache", tagLang:"Sprache der Schilder", uiLang:"Sprache des Menüs",
+    currency:"Währung", curCustom:"Symbol und Name", shop:"Ladendaten", storeName:"Ladenname",
+    phone:"Telefon", facebook:"Facebook", logoImage:"Logo-Bild", chooseFile:"Datei wählen",
+    reset:"Zurücksetzen", contacts:"Kontakte", addContact:"Kontakt hinzufügen", useName:"Übernehmen",
+    useSpecs:"Daten übernehmen", noMatch:"Nicht in der Liste", searchWeb:"Im Web suchen",
+    ph_store:"Ihr Ladenname hier", ph_phone:"Ihre Telefonnummer hier", ph_your:"Ihr {p} hier",
+    ph_email:"Ihre E-Mail hier", ph_website:"Ihre Website hier", p_phone:"Telefon", p_email:"E-Mail",
+    p_website:"Website", colors:"Textfarben", resetColors:"Farben zurücksetzen", c_brand:"Ladenname",
+    c_model:"Modelltext", c_spec:"Beschriftungen", c_price:"Preis", c_meta:"Kleingedrucktes",
+    c_rule:"Linien", c_contact:"Kontakt", c_bg:"Hintergrund", options:"Seitenoptionen",
+    sep:"Tausendertrennzeichen", textSize:"Textgröße", small:"Klein", normal:"Normal", large:"Groß",
+    xlarge:"Sehr groß", cutGuides:"Schnittlinien", show:"Anzeigen", hide:"Ausblenden", devices:"Geräte",
+    devicesDesc:"Geben Sie einen Modellcode wie RMX3310 oder SM-S256VL ein, um den echten Namen zu erhalten. Jedes leer gelassene Feld wird als Linie zum Ausfüllen gedruckt.",
+    h_model:"Modell", h_cpu:"CPU", h_ram:"RAM", h_price:"Preis", h_warranty:"Garantie", h_qty:"Schilder",
+    emptyTitle:"Noch keine Geräte",
+    emptyMsg:"Fügen Sie eines hinzu, oder drucken Sie das Blatt leer und füllen Sie es von Hand aus.",
+    st_tags:"Schilder", st_pages:"Seiten", st_blank:"Freie Plätze", preview:"Vorschau",
+    previewSize:"Vorschaugröße", printNote:"Gedruckt wird immer in Originalgröße.",
+    confirmClear:"Alle Geräte löschen und die Ladendaten zurücksetzen?",
+    badFile:"Das ist keine Preisschild-Datei. Wählen Sie eine, die hier exportiert wurde.",
+    badImage:"Das Bild konnte nicht gelesen werden. Versuchen Sie ein PNG oder JPG."},
+  ru:{n:"Русский", title:"Ценники", sheetMeta:"A4 · 12 на страницу", print:"Печать",
+    add:"Добавить устройство", export:"Экспорт файла", open:"Открыть файл", clear:"Очистить всё",
+    theme:"Тема", language:"Язык", tagLang:"Язык ценника", uiLang:"Язык меню", currency:"Валюта",
+    curCustom:"Символ и название", shop:"Данные магазина", storeName:"Название магазина", phone:"Телефон",
+    facebook:"Facebook", logoImage:"Логотип", chooseFile:"Выбрать файл", reset:"Сбросить",
+    contacts:"Контакты", addContact:"Добавить контакт", useName:"Вставить",
+    useSpecs:"Заполнить характеристики", noMatch:"Нет в списке", searchWeb:"Искать в интернете",
+    ph_store:"Название вашего магазина", ph_phone:"Ваш номер телефона", ph_your:"Ваш {p}",
+    ph_email:"Ваш e-mail", ph_website:"Ваш сайт", p_phone:"Телефон", p_email:"E-mail", p_website:"Сайт",
+    colors:"Цвета текста", resetColors:"Сбросить цвета", c_brand:"Название магазина",
+    c_model:"Текст модели", c_spec:"Подписи характеристик", c_price:"Цена", c_meta:"Мелкий шрифт",
+    c_rule:"Линии", c_contact:"Контакты", c_bg:"Фон", options:"Параметры листа", sep:"Разделитель тысяч",
+    textSize:"Размер текста", small:"Мелкий", normal:"Обычный", large:"Крупный", xlarge:"Очень крупный",
+    cutGuides:"Линии реза", show:"Показать", hide:"Скрыть", devices:"Устройства",
+    devicesDesc:"Введите код модели, например RMX3310 или SM-S256VL, чтобы получить настоящее название. Любое пустое поле печатается как строка для записи от руки.",
+    h_model:"Модель", h_cpu:"Чипсет", h_ram:"RAM", h_price:"Цена", h_warranty:"Гарантия", h_qty:"Ценники",
+    emptyTitle:"Устройств пока нет",
+    emptyMsg:"Добавьте устройство или распечатайте пустой лист и заполните от руки.", st_tags:"Ценники",
+    st_pages:"Страницы", st_blank:"Пустые места", preview:"Предпросмотр",
+    previewSize:"Размер предпросмотра", printNote:"Печать всегда в натуральную величину.",
+    confirmClear:"Удалить все устройства и сбросить данные магазина?",
+    badFile:"Это не файл ценников. Выберите файл, экспортированный отсюда.",
+    badImage:"Не удалось прочитать изображение. Попробуйте PNG или JPG."},
+  id:{n:"Indonesia", title:"Label harga", sheetMeta:"A4 · 12 per halaman", print:"Cetak",
+    add:"Tambah perangkat", export:"Ekspor file", open:"Buka file", clear:"Hapus semua", theme:"Tema",
+    language:"Bahasa", tagLang:"Bahasa label", uiLang:"Bahasa menu", currency:"Mata uang",
+    curCustom:"Simbol & nama", shop:"Data toko", storeName:"Nama toko", phone:"Telepon",
+    facebook:"Facebook", logoImage:"Gambar logo", chooseFile:"Pilih file", reset:"Atur ulang",
+    contacts:"Kontak", addContact:"Tambah kontak", useName:"Pakai", useSpecs:"Isi spesifikasi",
+    noMatch:"Tidak ada di daftar", searchWeb:"Cari di web", ph_store:"Nama toko Anda di sini",
+    ph_phone:"Nomor telepon Anda di sini", ph_your:"{p} Anda di sini", ph_email:"Email Anda di sini",
+    ph_website:"Situs web Anda di sini", p_phone:"Telepon", p_email:"Email", p_website:"Situs web",
+    colors:"Warna teks", resetColors:"Atur ulang warna", c_brand:"Nama toko", c_model:"Teks model",
+    c_spec:"Label spesifikasi", c_price:"Harga", c_meta:"Tulisan kecil", c_rule:"Garis", c_contact:"Kontak",
+    c_bg:"Latar", options:"Opsi lembar", sep:"Pemisah ribuan", textSize:"Ukuran teks", small:"Kecil",
+    normal:"Normal", large:"Besar", xlarge:"Sangat besar", cutGuides:"Garis potong", show:"Tampilkan",
+    hide:"Sembunyikan", devices:"Perangkat",
+    devicesDesc:"Ketik kode model seperti RMX3310 atau SM-S256VL untuk mendapatkan nama aslinya. Kolom yang dibiarkan kosong akan dicetak sebagai garis untuk ditulis tangan.",
+    h_model:"Model", h_cpu:"CPU", h_ram:"RAM", h_price:"Harga", h_warranty:"Garansi", h_qty:"Label",
+    emptyTitle:"Belum ada perangkat",
+    emptyMsg:"Tambahkan satu, atau cetak lembar kosong dan isi dengan tulisan tangan.", st_tags:"Label",
+    st_pages:"Halaman", st_blank:"Slot kosong", preview:"Pratinjau", previewSize:"Ukuran pratinjau",
+    printNote:"Hasil cetak selalu ukuran penuh.",
+    confirmClear:"Hapus semua perangkat dan atur ulang data toko?",
+    badFile:"File itu bukan file label harga. Pilih file yang diekspor dari sini.",
+    badImage:"Gambar itu tidak bisa dibaca. Coba PNG atau JPG."},
+  ms:{n:"Melayu", title:"Tag harga", sheetMeta:"A4 · 12 setiap halaman", print:"Cetak", add:"Tambah peranti",
+    export:"Eksport fail", open:"Buka fail", clear:"Kosongkan semua", theme:"Tema", language:"Bahasa",
+    tagLang:"Bahasa tag", uiLang:"Bahasa menu", currency:"Mata wang", curCustom:"Simbol & nama",
+    shop:"Maklumat kedai", storeName:"Nama kedai", phone:"Telefon", facebook:"Facebook",
+    logoImage:"Imej logo", chooseFile:"Pilih fail", reset:"Set semula", contacts:"Maklumat hubungan",
+    addContact:"Tambah hubungan", useName:"Guna", useSpecs:"Isi spek", noMatch:"Tiada dalam senarai",
+    searchWeb:"Cari di web", ph_store:"Nama kedai anda di sini", ph_phone:"Nombor telefon anda di sini",
+    ph_your:"{p} anda di sini", ph_email:"E-mel anda di sini", ph_website:"Laman web anda di sini",
+    p_phone:"Telefon", p_email:"E-mel", p_website:"Laman web", colors:"Warna teks",
+    resetColors:"Set semula warna", c_brand:"Nama kedai", c_model:"Teks model", c_spec:"Label spek",
+    c_price:"Harga", c_meta:"Teks halus", c_rule:"Garisan", c_contact:"Hubungan", c_bg:"Latar belakang",
+    options:"Tetapan helaian", sep:"Pemisah ribuan", textSize:"Saiz teks", small:"Kecil", normal:"Biasa",
+    large:"Besar", xlarge:"Sangat besar", cutGuides:"Garis potong", show:"Tunjuk", hide:"Sembunyi",
+    devices:"Peranti",
+    devicesDesc:"Taip kod model seperti RMX3310 atau SM-S256VL untuk dapatkan nama sebenar. Kotak yang dibiarkan kosong akan dicetak sebagai garis untuk ditulis tangan.",
+    h_model:"Model", h_cpu:"CPU", h_ram:"RAM", h_price:"Harga", h_warranty:"Jaminan", h_qty:"Tag",
+    emptyTitle:"Belum ada peranti",
+    emptyMsg:"Tambah satu, atau cetak helaian kosong dan isi dengan tangan.", st_tags:"Tag",
+    st_pages:"Halaman", st_blank:"Ruang kosong", preview:"Pratonton", previewSize:"Saiz pratonton",
+    printNote:"Cetakan sentiasa bersaiz penuh.",
+    confirmClear:"Padam semua peranti dan set semula maklumat kedai?",
+    badFile:"Fail itu bukan fail tag harga. Pilih fail yang dieksport dari sini.",
+    badImage:"Gambar itu tidak dapat dibaca. Cuba PNG atau JPG."},
+  tl:{n:"Filipino", title:"Mga price tag", sheetMeta:"A4 · 12 kada pahina", print:"I-print",
+    add:"Magdagdag ng device", export:"I-export ang file", open:"Magbukas ng file", clear:"Burahin lahat",
+    theme:"Tema", language:"Wika", tagLang:"Wika sa tag", uiLang:"Wika ng menu", currency:"Pera",
+    curCustom:"Simbolo at pangalan", shop:"Detalye ng tindahan", storeName:"Pangalan ng tindahan",
+    phone:"Telepono", facebook:"Facebook", logoImage:"Larawan ng logo", chooseFile:"Pumili ng file",
+    reset:"I-reset", contacts:"Mga contact", addContact:"Magdagdag ng contact", useName:"Gamitin",
+    useSpecs:"Punan ang specs", noMatch:"Wala sa listahan", searchWeb:"Maghanap sa web",
+    ph_store:"Pangalan ng tindahan mo dito", ph_phone:"Numero ng telepono mo dito", ph_your:"{p} mo dito",
+    ph_email:"Email mo dito", ph_website:"Website mo dito", p_phone:"Telepono", p_email:"Email",
+    p_website:"Website", colors:"Kulay ng teksto", resetColors:"I-reset ang kulay",
+    c_brand:"Pangalan ng tindahan", c_model:"Teksto ng modelo", c_spec:"Label ng specs", c_price:"Presyo",
+    c_meta:"Maliit na teksto", c_rule:"Mga linya", c_contact:"Contact", c_bg:"Background",
+    options:"Setting ng sheet", sep:"Separator ng libo", textSize:"Laki ng teksto", small:"Maliit",
+    normal:"Normal", large:"Malaki", xlarge:"Sobrang laki", cutGuides:"Gabay sa paggupit", show:"Ipakita",
+    hide:"Itago", devices:"Mga device",
+    devicesDesc:"Mag-type ng model code tulad ng RMX3310 o SM-S256VL para makuha ang totoong pangalan. Ang kahong iniwang blangko ay magpi-print bilang linyang masusulatan.",
+    h_model:"Modelo", h_cpu:"CPU", h_ram:"RAM", h_price:"Presyo", h_warranty:"Warranty", h_qty:"Tags",
+    emptyTitle:"Wala pang device",
+    emptyMsg:"Magdagdag ng isa, o i-print ang blangkong sheet at sulatan ito.", st_tags:"Tags",
+    st_pages:"Pahina", st_blank:"Blangkong puwang", preview:"Preview", previewSize:"Laki ng preview",
+    printNote:"Laging buong laki ang pag-print.",
+    confirmClear:"Burahin ang lahat ng device at i-reset ang detalye ng tindahan?",
+    badFile:"Hindi ito price tag file. Pumili ng file na na-export mula rito.",
+    badImage:"Hindi mabasa ang larawang iyon. Subukan ang PNG o JPG."},
+  hi:{n:"हिन्दी", title:"प्राइस टैग", sheetMeta:"A4 · 12 प्रति पेज", print:"प्रिंट करें", add:"डिवाइस जोड़ें",
+    export:"फ़ाइल एक्सपोर्ट करें", open:"फ़ाइल खोलें", clear:"सब हटाएँ", theme:"थीम", language:"भाषा",
+    tagLang:"टैग की भाषा", uiLang:"मेन्यू की भाषा", currency:"मुद्रा", curCustom:"चिह्न और नाम",
+    shop:"दुकान की जानकारी", storeName:"दुकान का नाम", phone:"फ़ोन", facebook:"Facebook",
+    logoImage:"लोगो इमेज", chooseFile:"फ़ाइल चुनें", reset:"रीसेट", contacts:"संपर्क",
+    addContact:"संपर्क जोड़ें", useName:"लगाएँ", useSpecs:"स्पेक्स भरें", noMatch:"सूची में नहीं है",
+    searchWeb:"वेब पर खोजें", ph_store:"यहाँ अपनी दुकान का नाम", ph_phone:"यहाँ अपना फ़ोन नंबर",
+    ph_your:"यहाँ अपना {p}", ph_email:"यहाँ अपना ईमेल", ph_website:"यहाँ अपनी वेबसाइट", p_phone:"फ़ोन",
+    p_email:"ईमेल", p_website:"वेबसाइट", colors:"टेक्स्ट के रंग", resetColors:"रंग रीसेट करें",
+    c_brand:"दुकान का नाम", c_model:"मॉडल टेक्स्ट", c_spec:"स्पेक लेबल", c_price:"क़ीमत",
+    c_meta:"छोटा टेक्स्ट", c_rule:"लाइनें", c_contact:"संपर्क", c_bg:"बैकग्राउंड", options:"शीट सेटिंग",
+    sep:"हज़ार का विभाजक", textSize:"टेक्स्ट का आकार", small:"छोटा", normal:"सामान्य", large:"बड़ा",
+    xlarge:"बहुत बड़ा", cutGuides:"कटिंग लाइनें", show:"दिखाएँ", hide:"छिपाएँ", devices:"डिवाइस",
+    devicesDesc:"असली नाम पाने के लिए RMX3310 या SM-S256VL जैसा मॉडल कोड टाइप करें। खाली छोड़ा गया कोई भी बॉक्स हाथ से लिखने की लाइन बनकर प्रिंट होगा।",
+    h_model:"मॉडल", h_cpu:"CPU", h_ram:"RAM", h_price:"क़ीमत", h_warranty:"वारंटी", h_qty:"टैग",
+    emptyTitle:"अभी कोई डिवाइस नहीं", emptyMsg:"एक जोड़ें, या खाली शीट प्रिंट करके हाथ से भर लें।",
+    st_tags:"टैग", st_pages:"पेज", st_blank:"खाली जगह", preview:"प्रीव्यू", previewSize:"प्रीव्यू का आकार",
+    printNote:"प्रिंट हमेशा पूरे आकार में होता है।",
+    confirmClear:"सारे डिवाइस हटाकर दुकान की जानकारी रीसेट करें?",
+    badFile:"यह प्राइस टैग फ़ाइल नहीं है। यहीं से एक्सपोर्ट की गई फ़ाइल चुनें।",
+    badImage:"वह इमेज पढ़ी नहीं जा सकी। PNG या JPG आज़माएँ।"},
+  ar:{n:"العربية", title:"بطاقات الأسعار", sheetMeta:"A4 · 12 لكل صفحة", print:"طباعة", add:"إضافة جهاز",
+    export:"تصدير ملف", open:"فتح ملف", clear:"مسح الكل", theme:"المظهر", language:"اللغة",
+    tagLang:"لغة البطاقة", uiLang:"لغة القائمة", currency:"العملة", curCustom:"الرمز والاسم",
+    shop:"بيانات المحل", storeName:"اسم المحل", phone:"الهاتف", facebook:"Facebook",
+    logoImage:"صورة الشعار", chooseFile:"اختيار ملف", reset:"إعادة ضبط", contacts:"وسائل التواصل",
+    addContact:"إضافة وسيلة تواصل", useName:"استخدام", useSpecs:"تعبئة المواصفات",
+    noMatch:"غير موجود في القائمة", searchWeb:"البحث في الويب", ph_store:"اسم محلك هنا",
+    ph_phone:"رقم هاتفك هنا", ph_your:"{p} الخاص بك هنا", ph_email:"بريدك الإلكتروني هنا",
+    ph_website:"موقعك الإلكتروني هنا", p_phone:"هاتف", p_email:"بريد إلكتروني", p_website:"موقع إلكتروني",
+    colors:"ألوان النص", resetColors:"إعادة ضبط الألوان", c_brand:"اسم المحل", c_model:"نص الطراز",
+    c_spec:"عناوين المواصفات", c_price:"السعر", c_meta:"الخط الصغير", c_rule:"الخطوط", c_contact:"التواصل",
+    c_bg:"الخلفية", options:"إعدادات الورقة", sep:"فاصل الآلاف", textSize:"حجم النص", small:"صغير",
+    normal:"عادي", large:"كبير", xlarge:"كبير جدًا", cutGuides:"خطوط القص", show:"إظهار", hide:"إخفاء",
+    devices:"الأجهزة",
+    devicesDesc:"اكتب رمز الطراز مثل RMX3310 أو SM-S256VL للحصول على الاسم الحقيقي. أي خانة تُترك فارغة تُطبع كسطر للكتابة عليه بخط اليد.",
+    h_model:"الطراز", h_cpu:"المعالج", h_ram:"RAM", h_price:"السعر", h_warranty:"الضمان", h_qty:"البطاقات",
+    emptyTitle:"لا توجد أجهزة بعد", emptyMsg:"أضف جهازًا، أو اطبع الورقة فارغة واملأها بخط اليد.",
+    st_tags:"البطاقات", st_pages:"الصفحات", st_blank:"خانات فارغة", preview:"معاينة",
+    previewSize:"حجم المعاينة", printNote:"الطباعة دائمًا بالحجم الكامل.",
+    confirmClear:"حذف كل الأجهزة وإعادة ضبط بيانات المحل؟",
+    badFile:"هذا ليس ملف بطاقات أسعار. اختر ملفًا مُصدَّرًا من هنا.",
+    badImage:"تعذّرت قراءة هذه الصورة. جرّب PNG أو JPG."}
 };
 
 var CUR = [
@@ -663,7 +1002,7 @@ function normalize(o){
     if(!Array.isArray(o.learned[k])) return;
     d.learned[k] = o.learned[k].slice(-6).map(function(v){
       v = v || {};
-      return { region:str(v.region), gb:str(v.gb), ram:str(v.ram), mah:str(v.mah), cpu:str(v.cpu) };
+      return { gb:str(v.gb), ram:str(v.ram), mah:str(v.mah), cpu:str(v.cpu) };
     });
   });
   return d;
@@ -671,7 +1010,7 @@ function normalize(o){
 function cleanEntry(e){
   e = e || {}; var q = parseInt(e.qty,10);
   return { id:e.id||uid(), model:str(e.model), gb:str(e.gb), ram:str(e.ram), mah:str(e.mah),
-           region:str(e.region), cpu:str(e.cpu), price:str(e.price), warranty:str(e.warranty),
+           cpu:str(e.cpu), price:str(e.price), warranty:str(e.warranty),
            qty:(isNaN(q)||q<1)?1:Math.min(q,999) };
 }
 function str(v){ return typeof v==="string" ? v : (v==null ? "" : String(v)); }
@@ -707,7 +1046,6 @@ var ICON = {
   ram:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.6 0 3.1 1.9 3.7 5H8.3C8.9 5.9 10.4 4 12 4zM7.9 11h8.2a17 17 0 0 1 0 2H7.9a17 17 0 0 1 0-2zm.4 4h7.4c-.6 3.1-2.1 5-3.7 5s-3.1-1.9-3.7-5z"/></svg>',
   battery:'<svg viewBox="0 0 24 24"><path d="M3 7h15a2 2 0 0 1 2 2v1h1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v6h15V9H3z"/></svg>',
   cpu:'<svg viewBox="0 -960 960 960"><path d="M360-360v-240h240v240H360Zm0 240v-80h-80q-33 0-56.5-23.5T200-280v-80h-80v-80h80v-80h-80v-80h80v-80q0-33 23.5-56.5T280-760h80v-80h80v80h80v-80h80v80h80q33 0 56.5 23.5T760-680v80h80v80h-80v80h80v80h-80v80q0 33-23.5 56.5T680-200h-80v80h-80v-80h-80v80h-80Zm320-160v-400H280v400h400Z"/></svg>',
-  region:'<svg viewBox="0 -960 960 960"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-40-82v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q20-22 36-47.5t26.5-53q10.5-27.5 16-56.5t5.5-59q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>'
 };
 
 /* ══ contact platforms ══ */
@@ -774,8 +1112,8 @@ function learn(){
   state.entries.forEach(function(e){
     var k = normCode(e.model);
     if(k.length < 3) return;
-    if(!e.region && !e.gb && !e.ram && !e.mah && !e.cpu) return;
-    var v = { region:e.region, gb:e.gb, ram:e.ram, mah:e.mah, cpu:e.cpu };
+    if(!e.gb && !e.ram && !e.mah && !e.cpu) return;
+    var v = { gb:e.gb, ram:e.ram, mah:e.mah, cpu:e.cpu };
     var sig = JSON.stringify(v), list = L[k] || (L[k] = []);
     for(var i=0;i<list.length;i++) if(JSON.stringify(list[i]) === sig) return;
     list.push(v);
@@ -851,7 +1189,6 @@ function tagHTML(e,st){
     '<div class="field"><div class="field-label">'+esc(t.model)+'</div>'+
       '<div class="rule"><span class="v">'+esc(e.model)+'</span></div></div>'+
     '<div class="chips">'+chip("storage",e.gb,"GB","lg")+chip("ram",e.ram,t.ram,"lg")+chip("battery",e.mah,"mAh")+
-      (e.region ? chip("region",e.region,"","sm") : '')+
       (e.cpu ? chip("cpu",e.cpu,"","sm") : '')+'</div>'+
     '<div class="spacer"></div>'+
     '<div class="price">'+(st.curSym ? '<span class="kip">'+esc(st.curSym)+'</span>' : '')+
@@ -883,14 +1220,14 @@ function renderSheet(){
 }
 
 /* ══ list ══ */
-var COLS = [["model","text","iPhone 15 Pro"],["region","text","TH"],["gb","text","256"],["ram","text","8"],
+var COLS = [["model","text","iPhone 15 Pro"],["gb","text","256"],["ram","text","8"],
             ["mah","text","5000"],["cpu","text","Snap 8 Elite"],["price","text","8,500,000"],
             ["warranty","text","12"],["qty","number",""]];
 // Suggestions are the shop's own data: everything typed into the table and
 // everything the app has remembered against a model code. Storage, RAM and
 // warranty also carry the sizes every shop sees. Price and quantity get none —
 // autocompleting a price onto a tag is a mistake waiting to happen.
-var SUGGESTED = { model:1, region:1, gb:1, ram:1, mah:1, cpu:1, warranty:1 };
+var SUGGESTED = { model:1, gb:1, ram:1, mah:1, cpu:1, warranty:1 };
 var SEED = {
   gb:  ["16","32","64","128","256","512","1024"],
   ram: ["1","2","3","4","6","8","12","16","24"],
@@ -902,7 +1239,7 @@ function renderDatalists(){
   Object.keys(SEED).forEach(function(k){ SEED[k].forEach(function(v){ bag[k][v] = 1; }); });
   Object.keys(state.learned || {}).forEach(function(code){
     state.learned[code].forEach(function(v){
-      ["region","gb","ram","mah","cpu"].forEach(function(k){ if(v[k]) bag[k][v[k]] = 1; });
+      ["gb","ram","mah","cpu"].forEach(function(k){ if(v[k]) bag[k][v[k]] = 1; });
     });
   });
   state.entries.forEach(function(e){
@@ -1135,7 +1472,6 @@ var hintTimer, hintRow = -1;
 function hideHint(){ hintRow = -1; $("mhint").hidden = true; }
 function specLabel(v){
   var p = [];
-  if(v.region) p.push(v.region);
   if(v.gb)  p.push(v.gb + " GB");
   if(v.ram) p.push(v.ram + " GB RAM");
   if(v.mah) p.push(v.mah + " mAh");
@@ -1185,38 +1521,16 @@ function applySpecs(i, n){
   var inp = row && row.querySelector('input[data-k="model"]');
   var v = inp && specsFor(inp.value.trim())[n];
   if(!v) return;
-  ["region","gb","ram","mah","cpu"].forEach(function(k){  // gpu stays out — there is nowhere
-    if(!v[k]) return;                                     // on the tag to put it
+  ["gb","ram","mah","cpu"].forEach(function(k){  // gpu stays out — there is nowhere on
+    if(!v[k]) return;                            // the tag to put it
     state.entries[i][k] = v[k];
     var f = row.querySelector('input[data-k="'+k+'"]');
     if(f) f.value = v[k];
   });
   hideHint(); redraw(true);
 }
-// A model code usually carries its own market: MT952ZA/A -> ZA, SM-A035F -> F.
-// Reading those letters back out is string slicing on what was typed, so it
-// cannot be wrong. What the letter MEANS is never derived — the published
-// tables disagree with each other and go stale (ZP moved from Hong Kong to
-// South-East Asia) — so the code is shown as-is for the shop to confirm or
-// replace, and it is never written over something already entered.
-function regionFromCode(q){
-  // Only Apple's part number states the market it was built for: MT952ZA/A -> ZA.
-  // Samsung's trailing letter (SM-A035F) separates SKUs, not markets — its market
-  // code is the CSC on the box label (THL), which is nowhere in the model number,
-  // so it is typed rather than guessed. Slicing the letters out of what was typed
-  // cannot be wrong. It is never turned into a country name — the published
-  // tables disagree with each other and drift — so the shop writes the wording
-  // it wants and the app remembers it.
-  var m = /^[A-Za-z0-9]{5}([A-Za-z]{1,2})\s*\/\s*[Aa]$/.exec(String(q).trim());
-  return m ? m[1].toUpperCase() : "";
-}
 $("rows").addEventListener("input", function(ev){
   var inp = ev.target.closest('input[data-k="model"]'); if(!inp) return;
-  var rg = regionFromCode(inp.value);
-  if(rg){
-    var tr = inp.closest("tr"), f = tr.querySelector('input[data-k="region"]');
-    if(f && !f.value){ f.value = rg; state.entries[+tr.dataset.i].region = rg; redraw(); }
-  }
   clearTimeout(hintTimer);
   hintTimer = setTimeout(function(){ showHint(inp); }, 250);
 });
@@ -1241,8 +1555,6 @@ $("mhint").addEventListener("mousedown", function(ev){
     ev.preventDefault();
     var mi = $("rows").querySelector('tr[data-i="'+hintRow+'"] input[data-k="model"]');
     if(mi){
-      var rf = mi.closest("tr").querySelector('input[data-k="region"]');
-      if(rf){ rf.value = ""; state.entries[hintRow].region = ""; }   // let it refill for the new market
       mi.value = alt.dataset.code.replace(/^SM/,"SM-");
       mi.dispatchEvent(new Event("input", {bubbles:true}));
       mi.focus();

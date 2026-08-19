@@ -1,5 +1,5 @@
 {
-  "_comment": "Order is load-bearing: it sets the order of the language dropdowns. English leads; defaults() also starts on en.",
+  "_comment": "Order is load-bearing: it sets the order of the language dropdowns. English leads; defaults() also starts on en. Each code has a folder languages/<code>/ holding tag.json and ui.json.",
   "tag": [
     "en",
     "lo",
@@ -26,6 +26,22 @@
     "en",
     "lo",
     "th",
-    "zh"
+    "zh",
+    "zt",
+    "vi",
+    "km",
+    "my",
+    "ja",
+    "ko",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "ru",
+    "id",
+    "ms",
+    "tl",
+    "hi",
+    "ar"
   ]
 }

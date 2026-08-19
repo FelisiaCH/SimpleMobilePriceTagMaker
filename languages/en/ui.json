@@ -57,7 +57,6 @@
   "devices": "Devices",
   "devicesDesc": "Type a model code like RMX3310 or SM-S256VL to get the real name. Any box left empty prints as a line to write on.",
   "h_model": "Model",
-  "h_region": "Origin",
   "h_cpu": "CPU",
   "h_ram": "RAM",
   "h_price": "Price",
