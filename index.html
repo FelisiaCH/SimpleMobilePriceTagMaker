@@ -320,13 +320,13 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 /* ═══ print ═══ */
 @page{size:A4 portrait;margin:0}
 @media print{
-  .no-print{display:none !important}
   html,body{background:#fff !important;height:auto}
   .app,.main,.content,.card,.preview-body{
     display:block !important;padding:0 !important;margin:0 !important;gap:0 !important;
     border:0 !important;border-radius:0 !important;box-shadow:none !important;
     background:#fff !important;max-width:none !important;overflow:visible !important;
   }
+  .no-print{display:none !important}
   #sheet{zoom:1 !important;margin:0}
   .page{box-shadow:none;margin:0;break-after:page;page-break-after:always}
   .page:last-child{break-after:auto;page-break-after:auto}
